@@ -1,5 +1,5 @@
 // Scroll progress
-window.onscroll = function() {myFunction()};
+window.onscroll = () => myFunction();
 
 function myFunction() {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -21,12 +21,12 @@ function addEvent(obj, evt, fn) {
         obj.attachEvent('on' + evt, fn);
     }
 }
-addEvent(window,'load',function(e) {
-    addEvent(document, 'mouseout', function(e) {
+addEvent(window,'load',e => {
+    addEvent(document, 'mouseout', e => {
         e = e ? e : window.event;
         const from = e.relatedTarget || e.toElement;
         if (!from || from === null) {
-            modal_text.innerHTML = bye[Math.floor(Math.random() * bye.length)];;
+            modal_text.innerHTML = bye[Math.floor(Math.random() * bye.length)];
             modal.style.display = 'block';
         } else {
             modal.style.display = 'none';
@@ -38,7 +38,7 @@ addEvent(window,'load',function(e) {
 function tooglePopup() {
     const popup = document.getElementById('speechPopup');
     if (popup.classList.contains('show')) {
-        setTimeout(function() {
+        setTimeout(() => {
             popup.classList.toggle('hide');
             popup.classList.remove('show');
         }, 4000);
@@ -54,12 +54,12 @@ if (speech) {
     tooglePopup();
 
     // https://github.com/mdn/web-speech-api/tree/master/speech-color-changer
-    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
-    var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
-    var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+    var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
     const colors = [ 'aqua' , 'azure' , 'beige', 'bisque', 'black', 'blue', 'brown', 'chocolate', 'coral', 'crimson', 'cyan', 'fuchsia', 'ghostwhite', 'gold', 'goldenrod', 'gray', 'green', 'indigo', 'ivory', 'khaki', 'lavender', 'lime', 'linen', 'magenta', 'maroon', 'moccasin', 'navy', 'olive', 'orange', 'orchid', 'peru', 'pink', 'plum', 'purple', 'red', 'salmon', 'sienna', 'silver', 'snow', 'tan', 'teal', 'thistle', 'tomato', 'turquoise', 'violet', 'white', 'yellow'];
-    const grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ') + ' ;'
+    const grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ') + ' ;';
 
     let recognition = new SpeechRecognition();
     let speechRecognitionList = new SpeechGrammarList();
@@ -71,11 +71,11 @@ if (speech) {
 
     let mic = document.getElementById('speechPopup');
 
-    document.body.onload= function() {
+    document.body.onload = () => {
         recognition.start();
     }
       
-    recognition.onresult = function(event) {
+    recognition.onresult = event => {
       const last = event.results.length - 1;
       const color = event.results[last][0].transcript;
     
@@ -85,16 +85,16 @@ if (speech) {
       html.style.cssText = `--popupbg: ${color}`;
     }
     
-    recognition.onspeechend = function() {
+    recognition.onspeechend = () => {
       recognition.stop();
     }
     
-    recognition.onnomatch = function(event) {
+    recognition.onnomatch = event => {
         tooglePopup();
         mic.textContent = "I didn't recognise that color.";
     }
     
-    recognition.onerror = function(event) {
+    recognition.onerror = event => {
         tooglePopup();
         let html = document.getElementsByTagName('html')[0];
     }
