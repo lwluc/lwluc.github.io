@@ -240,7 +240,8 @@ article hr {
 article p {
   font-size: 15px;
   line-height: 1.9em;
-  word-wrap: break-word
+  word-wrap: break-word;
+  text-align: center;
 }
 
 article .footnote {
