@@ -323,18 +323,21 @@ article a:hover {
 /* Popup */
 
 :root {
-  --popupbg: #1FD6A0;    
+  --popupbg: rgb(143, 143, 143);
 }
 
-/* Popup container */
+/* Popup container - can be anything you want */
 .popup {
-  position: absolute;
-  top: 70px;
-  right: 20px;
+  position: relative;
   display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-/* The actual popup (appears on top) */
+/* The actual popup */
 .popup .popuptext {
   visibility: hidden;
   width: 160px;
@@ -345,8 +348,8 @@ article a:hover {
   padding: 8px 0;
   position: absolute;
   z-index: 1;
-  bottom: -25%;
-  left: -100px;
+  bottom: 125%;
+  left: 50%;
   margin-left: -80px;
 }
 
@@ -354,19 +357,20 @@ article a:hover {
 .popup .popuptext::after {
   content: "";
   position: absolute;
-  transform: rotate(270deg);
-  top: 65%;
-  left: 100%;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
   border-width: 5px;
-  border-style: solid; 
+  border-style: solid;
   border-color: var(--popupbg) transparent transparent transparent;
 }
 
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
+/* Toggle this class - hide and show the popup */
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s
+  animation: fadeIn 1s;
+  min-width: 215px;
 }
 
 /* Add animation (fade in the popup) */
@@ -380,8 +384,8 @@ article a:hover {
   to {opacity:1 ;}
 }
 
-.popup .hide {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 1s, opacity 1s linear;
+.bottom-right {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
 }
