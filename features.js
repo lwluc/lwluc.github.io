@@ -41,27 +41,32 @@ const togglePopup = () => {
 
 const getGEOInfo = () => {
   return new Promise(async (resolve, reject) => {
-    const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', 'http://ip-api.com/json', true);
-    xmlhttp.send();
-    xmlhttp.onload = () => {
-      if (!xmlhttp || xmlhttp.status !== 200) return reject;
-      const res = JSON.parse(xmlhttp.responseText);
-      if (res.status === 'fail') return reject;
-      resolve(res);
+    const request = new XMLHttpRequest();
+    request.open('GET', 'https://api.ipdata.co/?api-key=df287df2faaff1780c3528497ebf1d7de2ea66ba4d7f7dbd475471a7');
+    request.setRequestHeader('Accept', 'application/json');
+    request.onreadystatechange = () => {
+      if (request.readyState === 4) {
+        const res = JSON.parse(request.responseText);
+        if (res.status === 'fail') return reject;
+        resolve(res);
+      }
     };
+    request.send();
   });
 };
 
 const buildInfoObj = (geoInfo, osInfo) => {
   const obj = {
-    Country: geoInfo.country,
-    Region: geoInfo.regionName,
-    Latitude: geoInfo.lat,
-    Longitude: geoInfo.lon,
-    Organisation: geoInfo.org,
-    IP: geoInfo.query,
+    City: geoInfo.city,
+    Country: `${geoInfo.country_name} ${geoInfo.emoji_flag}`,
+    Region: geoInfo.region,
+    Latitude: geoInfo.latitude,
+    Longitude: geoInfo.longitude,
+    Organisation: geoInfo.asn.name,
+    IP: geoInfo.ip,
     Browser: `${osInfo.browser} (${osInfo.browserMajorVersion})`,
+    'Using Tor': geoInfo.threat.is_tor,
+    'Using Proxy': geoInfo.threat.is_proxy,
     Screen: osInfo.screen
   };
   if (osInfo !== '-') obj.OS = `${osInfo.os} (${osInfo.osVersion.replace(/_/g, '.')})`;
