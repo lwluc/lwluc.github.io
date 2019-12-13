@@ -46,6 +46,7 @@ const getGEOInfo = () => {
     request.setRequestHeader('Accept', 'application/json');
     request.onreadystatechange = () => {
       if (request.readyState === 4) {
+        if (request.status === 0) return reject('Server not responsending.');
         const res = JSON.parse(request.responseText);
         if (res.status === 'fail') return reject;
         resolve(res);
@@ -76,9 +77,15 @@ const buildInfoObj = (geoInfo, osInfo) => {
 };
 
 const beautifyClientInfo = async () => {
-  const geoInfo = await getGEOInfo();
-  const osInfo = getOSInfo(window);
   const span = document.getElementById('clientInfo');
+  let geoInfo;
+  try {
+    geoInfo = await getGEOInfo();
+
+  } catch(e) {
+    return span.parentElement.remove();
+  }
+  const osInfo = getOSInfo(window);
   const info = buildInfoObj(geoInfo, osInfo);
   let txt = '<table>';
   Object.keys(info).forEach(key => {
