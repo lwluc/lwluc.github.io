@@ -4,8 +4,11 @@ const loadGame = () => {
   const code = urlParams.get('code');
   if (code && (code === 'won' || code === 'ok' || code === 'hacker'))
     return showSuccessMsg(code);
-  const redirectToGame = url.replace('index.html', 'tic-tac-toe.html');
-  window.location.replace(redirectToGame);
+  let redirectToGame = url + 'tic-tac-toe.html';
+  if (url.includes('index.html')) {
+    redirectToGame = url.replace('index.html', 'tic-tac-toe.html');
+  }
+  window.location.href = redirectToGame;
 };
 
 showSuccessMsg = code => {
