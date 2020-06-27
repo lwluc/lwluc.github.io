@@ -57,7 +57,7 @@ UI.animateGameOverCells = parGameState => {
 
   if (parGameState.GAME_RESULT !== 'X' && parGameState.GAME_RESULT !== 'O') return; 
 
-  const color = parGameState.GAME_RESULT  === 'X' ? 'lost' : 'won';
+  const color = parGameState.GAME_RESULT  === 'X' ? 'won' : 'lost';
 
   if (parGameState.SLASH_INFO.row !== 0) {
     document.getElementsByClassName(`c_row_${parGameState.SLASH_INFO.row}`)[0].classList.add(color);

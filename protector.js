@@ -8,8 +8,17 @@ const loadGame = () => {
   window.location.replace(redirectToGame);
 };
 
-showSuccessMsg = code => {
-  console.log(code);
+showSuccessMsg = (code) => {
+  let text = 'You lucky seems like you won against me! 🥳';
+  if (code === 'hacker') text = 'Nicely bypassed the game! 👾';
+  const snackbar = document.createElement('div');
+  snackbar.id = 'snackbar';
+  snackbar.innerHTML = text;
+  snackbar.className = 'show';
+  window.onload = () => {
+    document.body.appendChild(snackbar);
+    setTimeout(() => { snackbar.className = snackbar.className.replace('show', ''); }, 3000);
+  };
 };
 
 loadGame();
