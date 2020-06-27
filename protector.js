@@ -27,4 +27,4 @@ showSuccessMsg = code => {
 };
 
 
-window.onload = () => loadGame();
+loadGame();
