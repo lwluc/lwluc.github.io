@@ -120,7 +120,9 @@ function doPostTurnActivities() {
 
 function starteGame(level) {
   if (!level) {
-    level = document.getElementById('levelSelector').checked ? 'Medium' : 'Hard';
+    level = document.getElementById('levelSelector').checked
+      ? 'Medium'
+      : 'Hard';
   }
   logger.log(`Starting a new Game (level: ${level})`);
   GAME_STATE = new cGameState(level);

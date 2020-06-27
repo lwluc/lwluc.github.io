@@ -8,7 +8,7 @@ const loadGame = () => {
   window.location.replace(redirectToGame);
 };
 
-showSuccessMsg = (code) => {
+showSuccessMsg = code => {
   let text = 'You lucky seems like you won against me! 🥳';
   if (code === 'hacker') text = 'Nicely bypassed the game! 👾';
   const snackbar = document.createElement('div');
@@ -17,7 +17,9 @@ showSuccessMsg = (code) => {
   snackbar.className = 'show';
   window.onload = () => {
     document.body.appendChild(snackbar);
-    setTimeout(() => { snackbar.className = snackbar.className.replace('show', ''); }, 3000);
+    setTimeout(() => {
+      snackbar.className = snackbar.className.replace('show', '');
+    }, 3000);
   };
 };
 

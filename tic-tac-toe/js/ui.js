@@ -55,14 +55,21 @@ UI.drawSVG = (cell, parGameState) => {
 UI.animateGameOverCells = parGameState => {
   logger.log('Entering into animateGameOverCells');
 
-  if (parGameState.GAME_RESULT !== 'X' && parGameState.GAME_RESULT !== 'O') return; 
+  if (parGameState.GAME_RESULT !== 'X' && parGameState.GAME_RESULT !== 'O')
+    return;
 
-  const color = parGameState.GAME_RESULT  === 'X' ? 'won' : 'lost';
+  const color = parGameState.GAME_RESULT === 'X' ? 'won' : 'lost';
 
   if (parGameState.SLASH_INFO.row !== 0) {
-    document.getElementsByClassName(`c_row_${parGameState.SLASH_INFO.row}`)[0].classList.add(color);
+    document
+      .getElementsByClassName(`c_row_${parGameState.SLASH_INFO.row}`)[0]
+      .classList.add(color);
   } else if (parGameState.SLASH_INFO.col !== 0) {
-    [1, 2, 3].forEach(e => document.getElementById(`cell-${e}${parGameState.SLASH_INFO.col}`).classList.add(color)); 
+    [1, 2, 3].forEach(e =>
+      document
+        .getElementById(`cell-${e}${parGameState.SLASH_INFO.col}`)
+        .classList.add(color)
+    );
   } else if (parGameState.SLASH_INFO.diag !== 0) {
     if (parGameState.SLASH_INFO.diag === 1) {
       document.getElementById('cell-11').classList.add(color);
@@ -84,30 +91,35 @@ UI.updateScreen = parGameState => {
       {
         if (parGameState.TURN === parGameState.SYMBOL.robot) {
           // When current marker is 'X', then the next step will be by 'O', hence the below logic
-          document.getElementById('messageboard').innerHTML = "<br>It's my turn";
+          document.getElementById('messageboard').innerHTML =
+            "<br>It's my turn";
         } else if (parGameState.TURN === parGameState.SYMBOL.human) {
-          document.getElementById('messageboard').innerHTML = "<br>It's your turn";
+          document.getElementById('messageboard').innerHTML =
+            "<br>It's your turn";
         }
       }
       break;
 
     case parGameState.RESULTS.playerXWon:
       {
-        document.getElementById('messageboard').innerHTML = '<br> You have <b>won</b>!<br> You will be redirected';
+        document.getElementById('messageboard').innerHTML =
+          '<br> You have <b>won</b>!<br> You will be redirected';
         UI.animateGameOverCells(parGameState);
       }
       break;
 
     case parGameState.RESULTS.playerOWon:
       {
-        document.getElementById('messageboard').innerHTML = '<br> <b>Gameover</b>! <a href="javascript:starteGame()">Play again</a> to view my page';
+        document.getElementById('messageboard').innerHTML =
+          '<br> <b>Gameover</b>! <a href="javascript:starteGame()">Play again</a> to view my page';
         UI.animateGameOverCells(parGameState);
       }
       break;
 
     case parGameState.RESULTS.tie:
       {
-        document.getElementById('messageboard').innerHTML = '<br> <b>Tie</b>! <a href="javascript:starteGame()">Play again</a> to view my page';
+        document.getElementById('messageboard').innerHTML =
+          '<br> <b>Tie</b>! <a href="javascript:starteGame()">Play again</a> to view my page';
         UI.animateGameOverCells(parGameState);
       }
       break;

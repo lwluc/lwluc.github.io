@@ -143,7 +143,7 @@ const cGameState = function(level) {
         if (line === this.TURN.repeat(3)) {
           pos = [[itr, 0], [itr, 1], [itr, 2]];
           game_status = true;
-          this.SLASH_INFO = { row:  (itr + 1), col: 0, diag: 0 };
+          this.SLASH_INFO = { row: itr + 1, col: 0, diag: 0 };
           break;
         }
       }
@@ -156,7 +156,7 @@ const cGameState = function(level) {
         if (line === this.TURN.repeat(3)) {
           pos = [[0, itr], [1, itr], [2, itr]];
           game_status = true;
-          this.SLASH_INFO = { row:  0, col: (itr + 1), diag: 0 };
+          this.SLASH_INFO = { row: 0, col: itr + 1, diag: 0 };
           break;
         }
       }
@@ -169,7 +169,7 @@ const cGameState = function(level) {
       if (line === this.TURN.repeat(3)) {
         pos = [[0, 0], [1, 1], [2, 2]];
         game_status = true;
-        this.SLASH_INFO = { row:  0, col: 0, diag: 1 };
+        this.SLASH_INFO = { row: 0, col: 0, diag: 1 };
         break;
       }
 
@@ -181,7 +181,7 @@ const cGameState = function(level) {
       if (line === this.TURN.repeat(3)) {
         pos = [[0, 2], [1, 1], [2, 0]];
         game_status = true;
-        this.SLASH_INFO = { row:  0, col: 0, diag: 2 };
+        this.SLASH_INFO = { row: 0, col: 0, diag: 2 };
         break;
       }
     } while (0);

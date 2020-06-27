@@ -67,7 +67,7 @@ table {
   border-collapse: collapse;
 }
 table td {
-  border: 5px solid black; 
+  border: 5px solid black;
 }
 table tr:first-child td {
   border-top: 0;
