@@ -2,8 +2,11 @@
 window.onscroll = () => scrollBar();
 
 function scrollBar() {
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const winScroll =
+    document.body.scrollTop || document.documentElement.scrollTop;
+  const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
   const scrolled = (winScroll / height) * 100;
   document.getElementById('myBar').style.width = scrolled + '%';
 }
@@ -11,27 +14,33 @@ function scrollBar() {
 // Modal
 const modal = document.getElementById('myModal');
 const modal_text = document.getElementById('modalText');
-const bye = ['see you &#128530;', 'nice to &#127830; you', 'catch you later &#127939;', 'bye &#128165;', 'adios &#128075;&#127996;'];
+const bye = [
+  'see you &#128530;',
+  'nice to &#127830; you',
+  'catch you later &#127939;',
+  'bye &#128165;',
+  'adios &#128075;&#127996;',
+];
 
 // Mouse leaving detection https://stackoverflow.com/a/3187524
 function addEvent(obj, evt, fn) {
-    if (obj.addEventListener) {
-        obj.addEventListener(evt, fn, false);
-    } else if (obj.attachEvent) {
-        obj.attachEvent('on' + evt, fn);
-    }
+  if (obj.addEventListener) {
+    obj.addEventListener(evt, fn, false);
+  } else if (obj.attachEvent) {
+    obj.attachEvent('on' + evt, fn);
+  }
 }
-addEvent(window,'load',e => {
-    addEvent(document, 'mouseout', e => {
-        e = e ? e : window.event;
-        const from = e.relatedTarget || e.toElement;
-        if (!from || from === null) {
-            modal_text.innerHTML = bye[Math.floor(Math.random() * bye.length)];
-            modal.style.display = 'block';
-        } else {
-            modal.style.display = 'none';
-        }
-    });
+addEvent(window, 'load', e => {
+  addEvent(document, 'mouseout', e => {
+    e = e ? e : window.event;
+    const from = e.relatedTarget || e.toElement;
+    if (!from || from === null) {
+      modal_text.innerHTML = bye[Math.floor(Math.random() * bye.length)];
+      modal.style.display = 'block';
+    } else {
+      modal.style.display = 'none';
+    }
+  });
 });
 
 const togglePopup = () => {
@@ -42,7 +51,10 @@ const togglePopup = () => {
 const getGEOInfo = () => {
   return new Promise(async (resolve, reject) => {
     const request = new XMLHttpRequest();
-    request.open('GET', 'https://api.ipdata.co/?api-key=df287df2faaff1780c3528497ebf1d7de2ea66ba4d7f7dbd475471a7');
+    request.open(
+      'GET',
+      'https://api.ipdata.co/?api-key=df287df2faaff1780c3528497ebf1d7de2ea66ba4d7f7dbd475471a7'
+    );
     request.setRequestHeader('Accept', 'application/json');
     request.onreadystatechange = () => {
       if (request.readyState === 4) {
@@ -68,9 +80,10 @@ const buildInfoObj = (geoInfo, osInfo) => {
     Browser: `${osInfo.browser} (${osInfo.browserMajorVersion})`,
     'Using Tor': geoInfo.threat.is_tor,
     'Using Proxy': geoInfo.threat.is_proxy,
-    Screen: osInfo.screen
+    Screen: osInfo.screen,
   };
-  if (osInfo !== '-') obj.OS = `${osInfo.os} (${osInfo.osVersion.replace(/_/g, '.')})`;
+  if (osInfo !== '-')
+    obj.OS = `${osInfo.os} (${osInfo.osVersion.replace(/_/g, '.')})`;
   if (osInfo.flashVersion !== 'no check' && osInfo.flashVersion !== '-')
     obj['Flash Version'] = `${osInfo.flashVersion}`;
   return obj;
@@ -81,15 +94,20 @@ const beautifyClientInfo = async () => {
   let geoInfo;
   try {
     geoInfo = await getGEOInfo();
-
-  } catch(e) {
+  } catch (e) {
     return span.parentElement.remove();
   }
   const osInfo = getOSInfo(window);
   const info = buildInfoObj(geoInfo, osInfo);
   let txt = '<table>';
   Object.keys(info).forEach(key => {
-    txt += '<tr><td align="left">' + key + '</td>' + '<td align="right">' + info[key] + '</td></tr>';
+    txt +=
+      '<tr><td align="left">' +
+      key +
+      '</td>' +
+      '<td align="right">' +
+      info[key] +
+      '</td></tr>';
   });
   txt += '</table>';
   txt += '<br>* None of this information is stored!';
@@ -171,7 +189,8 @@ function getOSInfo(window) {
     }
     // Other browsers
     else if (
-      (nameOffset = nAgt.lastIndexOf(' ') + 1) < (verOffset = nAgt.lastIndexOf('/'))
+      (nameOffset = nAgt.lastIndexOf(' ') + 1) <
+      (verOffset = nAgt.lastIndexOf('/'))
     ) {
       browser = nAgt.substring(nameOffset, verOffset);
       version = nAgt.substring(verOffset + 1);
@@ -198,7 +217,8 @@ function getOSInfo(window) {
 
     if (typeof navigator.cookieEnabled == 'undefined' && !cookieEnabled) {
       document.cookie = 'testcookie';
-      cookieEnabled = document.cookie.indexOf('testcookie') != -1 ? true : false;
+      cookieEnabled =
+        document.cookie.indexOf('testcookie') != -1 ? true : false;
     }
 
     // system
@@ -232,8 +252,8 @@ function getOSInfo(window) {
       { s: 'OS/2', r: /OS\/2/ },
       {
         s: 'Search Bot',
-        r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/
-      }
+        r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/,
+      },
     ];
     for (var id in clientStrings) {
       var cs = clientStrings[id];
@@ -261,7 +281,8 @@ function getOSInfo(window) {
 
       case 'iOS':
         osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
-        osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+        osVersion =
+          osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
         break;
     }
 
@@ -287,6 +308,6 @@ function getOSInfo(window) {
     os: os,
     osVersion: osVersion,
     cookies: cookieEnabled,
-    flashVersion: flashVersion
+    flashVersion: flashVersion,
   });
 }

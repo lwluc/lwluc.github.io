@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   overflow: auto;
 }
 
@@ -16,7 +17,8 @@ body {
   line-height: 20px;
   font-weight: normal;
   font-style: normal;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: #333333;
 }
 
@@ -28,7 +30,9 @@ body {
   background-color: #f1f1f1;
 }
 
-.border-l, border-r, border-b {
+.border-l,
+border-r,
+border-b {
   position: fixed;
   z-index: 100;
 }
@@ -45,23 +49,34 @@ body {
   width: 0%;
 }
 
-.bottom, .left, .right {
+.bottom,
+.left,
+.right {
   position: fixed;
   z-index: 100;
 }
 
-.left, .right {
-		top: 0; bottom: 0;
-		width: 15px;
+.left,
+.right {
+  top: 0;
+  bottom: 0;
+  width: 15px;
 }
-.left { left: 0; }
-.right { right: 0; }
-    
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
+
 .bottom {
-  left: 0; right: 0;
-	height: 15px;
+  left: 0;
+  right: 0;
+  height: 15px;
 }
-.bottom { bottom: 0; }
+.bottom {
+  bottom: 0;
+}
 
 .content {
   padding: 100px 0;
@@ -79,8 +94,8 @@ body {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
@@ -97,7 +112,7 @@ body {
   text-align: center;
 }
 
-/* The Plain */ 
+/* The Plain */
 h1,
 h2,
 h3,
@@ -106,34 +121,34 @@ h5,
 h6 {
   margin-bottom: 1rem;
   line-height: 1.25;
-  color: #313131
+  color: #313131;
 }
 
 h1 {
-  font-size: 2rem
+  font-size: 2rem;
 }
 
 h2 {
   margin-top: 1rem;
-  font-size: 1.5rem
+  font-size: 1.5rem;
 }
 
 h3 {
   margin-top: 1.5rem;
-  font-size: 1.25rem
+  font-size: 1.25rem;
 }
 
 h4,
 h5,
 h6 {
   margin-top: 1.1rem;
-  font-size: 1.1rem
+  font-size: 1.1rem;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid #555
+  border-bottom: 1px solid #555;
 }
 
 a.image {
@@ -141,19 +156,19 @@ a.image {
   text-align: center;
   border: 0;
   border-radius: 5px;
-  margin: 30px 0
+  margin: 30px 0;
 }
 
 mark {
   background: #fffc76;
-  padding: 0 5px
+  padding: 0 5px;
 }
 
 blockquote {
   border-left: 5px solid #ccc;
   margin: 40px 0;
   padding: 5px 30px;
-  background: #eee
+  background: #eee;
 }
 
 .logo {
@@ -164,7 +179,7 @@ blockquote {
   animation-name: bounce;
   -webkit-animation-duration: 0.7s;
   -webkit-animation-fill-mode: both;
-  -webkit-animation-name: bounce
+  -webkit-animation-name: bounce;
 }
 
 .logo img {
@@ -176,14 +191,14 @@ code,
 pre,
 .code,
 .footnotes {
-  font-family: Consolas, monaco, monospace
+  font-family: Consolas, monaco, monospace;
 }
 
 code {
   color: #f14e32;
   background: #eee;
   padding: 2px 6px;
-  font-size: 13px
+  font-size: 13px;
 }
 
 pre {
@@ -196,45 +211,62 @@ pre {
   overflow-x: auto;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
-  padding: 1rem
+  padding: 1rem;
 }
 
 pre code {
   font-size: 100%;
   color: inherit;
   background-color: transparent;
-  padding: 0
+  padding: 0;
 }
 
 article {
   max-width: 500px;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 article h1.title {
   line-height: 1.4em;
   text-align: center;
-  font-size: 1.4em
+  font-size: 1.4em;
 }
 
 article .divider {
   background: #ddd;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(#ccc), to(rgba(255, 255, 255, 0)));
-  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), #ccc, rgba(255, 255, 255, 0));
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), #ccc, rgba(255, 255, 255, 0));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgba(255, 255, 255, 0)),
+    color-stop(#ccc),
+    to(rgba(255, 255, 255, 0))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0),
+    #ccc,
+    rgba(255, 255, 255, 0)
+  );
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    #ccc,
+    rgba(255, 255, 255, 0)
+  );
   height: 1px;
-  margin: 2em 0
+  margin: 2em 0;
 }
 
 article .center {
   text-align: center;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 article hr {
   border: 0;
   border-bottom: 1px solid #000;
-  margin: 30px 0
+  margin: 30px 0;
 }
 
 article p {
@@ -246,62 +278,62 @@ article p {
 
 article .footnote {
   border: 0;
-  background-color: #0087BE;
+  background-color: #0087be;
   color: #fff;
   padding-left: 2px;
-  padding-right: 2px
+  padding-right: 2px;
 }
 
 article .footnotes {
   margin: 50px auto;
   display: block;
   font-size: 0.8em;
-  color: #666
+  color: #666;
 }
 
 article .footnotes p {
   line-height: 1rem;
-  font-weight: normal
+  font-weight: normal;
 }
 
 article .footnotes ol {
   margin: 0;
-  padding-left: 15px
+  padding-left: 15px;
 }
 
 article .footnotes ol li {
-  font-weight: bold
+  font-weight: bold;
 }
 
 article .footnotes .reversefootnote {
   border: 0;
-  color: #0087BE
+  color: #0087be;
 }
 
 article a:hover {
   color: #369;
-  border-color: #369
+  border-color: #369;
 }
 
 .block {
-  display: block
+  display: block;
 }
 
 .footer {
   text-align: center;
   max-width: 500px;
   margin: 0 auto;
-  font-size: 0.8rem
+  font-size: 0.8rem;
 }
 
 .footer {
   margin-top: 50px;
-  color: #777
+  color: #777;
 }
 
 .footer a {
   border: none;
-  font-weight: bold
+  font-weight: bold;
 }
 
 .icons {
@@ -355,7 +387,7 @@ article a:hover {
 
 /* Popup arrow */
 .popup .popuptext::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 100%;
   left: 50%;
@@ -375,13 +407,21 @@ article a:hover {
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
-  from {opacity: 0;} 
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .bottom-right {

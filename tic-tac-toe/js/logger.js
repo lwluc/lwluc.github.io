@@ -1,18 +1,18 @@
 logger = function() {};
 
-let isLogging = true;	
+let isLogging = true;
 
 logger.enableLogging = () => {
-	logger.log('Enabled Logging');
-	isLogging = true;
-}
+  logger.log('Enabled Logging');
+  isLogging = true;
+};
 
 logger.disableLogging = () => {
-	isLogging = false;
-}
+  isLogging = false;
+};
 
 logger.log = function() {
-	if(isLogging) {
-		Array.from(arguments).forEach(a => console.log(a));
-	}
-}
+  if (isLogging) {
+    Array.from(arguments).forEach(a => console.log(a));
+  }
+};

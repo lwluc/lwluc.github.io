@@ -1,56 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>luc weinbrecht</title>
+    <meta name="description" content="luc weinbrecht protfolio page" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/apple-icon.png" />
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>luc weinbrecht</title>
-  <meta name="description" content="luc weinbrecht protfolio page">
-  <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-  <link rel="icon" type="image/png" href="img/favicon.png" />
-  <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="tic-tac-toe/css/TicTacToe.css" />
+    <link rel="stylesheet" href="tic-tac-toe/css/toggle.css" />
+    <script src="tic-tac-toe/js/logger.js"></script>
+    <script src="tic-tac-toe/js/game_state.js"></script>
+    <script src="tic-tac-toe/js/ai.js"></script>
+    <script src="tic-tac-toe/js/ui.js"></script>
+    <script src="tic-tac-toe/js/script.js"></script>
+  </head>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="tic-tac-toe/css/TicTacToe.css">
-  <link rel="stylesheet" href="tic-tac-toe/css/toggle.css">
-  <script src="tic-tac-toe/js/logger.js"></script>
-  <script src="tic-tac-toe/js/game_state.js"></script>
-  <script src="tic-tac-toe/js/ai.js"></script>
-  <script src="tic-tac-toe/js/ui.js"></script>
-  <script src="tic-tac-toe/js/script.js"></script>
-</head>
+  <body>
+    <div class="content">
+      <article style="text-align: center;">
+        <div>
+          <span>Chance to win</span>
+          <label class="switch">
+            <input id="levelSelector" type="checkbox" checked />
+            <span class="slider round"></span>
+          </label>
+          <span>The real me</span>
+        </div>
 
-<body>
-  <div class="content">
-    <article style="text-align: center;">
-      <div>
-        <span>Chance to win</span>
-        <label class="switch">
-          <input id="levelSelector" type="checkbox" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>The real me</span>
-      </div>
+        <div id="messageboard"></div>
 
-      <div id="messageboard"></div>
+        <div id="gameboard" class="container">
+          <!-- This code will be injected at runtime from the JS -->
+        </div>
+      </article>
+    </div>
 
-      <div id="gameboard" class="container">
-        <!-- This code will be injected at runtime from the JS -->
-      </div>
-    </article>
-  </div>
-
-  <div class="source">
-    <small>
-      <span class="block">Inspired by 
-        <a href="https://github.com/satyapavan/tic-tac-toe">
-          S. Satya Pavan
-        </a>.
+    <div class="source">
+      <small>
+        <span class="block"
+          >Inspired by
+          <a href="https://github.com/satyapavan/tic-tac-toe">
+            S. Satya Pavan </a
+          >.
         </span>
       </small>
-  </div>
-
-</body>
-
+    </div>
+  </body>
 </html>
