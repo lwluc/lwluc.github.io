@@ -25,7 +25,7 @@ addEvent(window,'load',e => {
     addEvent(document, 'mouseout', e => {
         e = e ? e : window.event;
         const from = e.relatedTarget || e.toElement;
-        if (!from || from === null) {
+        if (!from || from === null) {
             modal_text.innerHTML = bye[Math.floor(Math.random() * bye.length)];
             modal.style.display = 'block';
         } else {

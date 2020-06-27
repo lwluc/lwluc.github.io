@@ -1,65 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>luc weinbrecht</title>
-<meta name="description" content="luc weinbrecht protfolio page">
-<link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-<link rel="icon" type="image/png" href="img/favicon.png" />
-<link rel="apple-touch-icon" href="img/apple-icon.png">
-<html lang="en"></html>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>luc weinbrecht</title>
+  <meta name="description" content="luc weinbrecht protfolio page">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="apple-touch-icon" href="img/apple-icon.png">
+
+  <script src="protector.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
+
 <body>
 
-<div class="header">
-  <div class="progress-container">
-    <div class="progress-bar" id="myBar"></div>
-  </div>  
-</div>
+  <div id="page">
 
-<div class="content">
-    <aside class="logo">
-      <img src="https://avatars0.githubusercontent.com/u/26872075?v=4" class="logo-avatar">
-    </aside>
-
-    <article>
-      <h1 class="title">luc weinbrecht</h1>
-      <div class="divider"></div>
-      <p>master business informatics student at <br> karlsruhe university of applied sciences</p>
-    </article>
-
-    <div class="footer">
-      <small><span class="block">2018 </span> <span class="block">Inspired by <a href="https://github.com/heiswayi/the-plain">The Plain theme</a>.</span></small>
-      <a href="http://twitter.com/lwluc" target="blank" class="icons twitter"><i class="fab fa-twitter-square"></i></a>
-      <a href="https://gitlab.com/lwluc" target="blank" class="icons gitlab"><i class="fab fa-gitlab"></i></a>
-      <a href="https://instagram.com/mr.pctr" target="blank" class="icons instagram"><i class="fab fa-instagram"></i></a>
+    <div class="header">
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
       </div>
-</div>
-
-<div class="left"></div>
-<div class="right"></div>
-<div class="bottom"></div>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <div>
-    <div class="modal-content">
-      <p id="modalText"></p>
     </div>
+  
+    <div class="content">
+      <aside class="logo">
+        <img src="https://avatars0.githubusercontent.com/u/26872075?v=4" class="logo-avatar">
+      </aside>
+  
+      <article>
+        <h1 class="title">luc weinbrecht</h1>
+        <div class="divider"></div>
+        <p>master business informatics student at <br> karlsruhe university of applied sciences</p>
+      </article>
+  
+      <div class="footer">
+        <small><span class="block">2020 </span> <span class="block">Inspired by <a
+              href="https://github.com/heiswayi/the-plain">The Plain theme</a>.</span></small>
+        <a href="http://twitter.com/lwluc" target="blank" class="icons twitter"><i class="fab fa-twitter-square"></i></a>
+        <a href="https://gitlab.com/lwluc" target="blank" class="icons gitlab"><i class="fab fa-gitlab"></i></a>
+        <a href="https://instagram.com/mr.pctr" target="blank" class="icons instagram"><i
+            class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="bottom"></div>
+  
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div>
+        <div class="modal-content">
+          <p id="modalText"></p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Client Info Popup -->
+    <div class="popup bottom-right" style="cursor: pointer; color: rgb(143, 143, 143);" onclick="togglePopup()">You want
+      to know something about
+      yourself?
+      <span class="popuptext" id="clientInfo"></span>
+    </div>
+  
+    <script src="features.js"></script>
   </div>
-</div>
 
-<!-- Client Info Popup -->
-<div class="popup bottom-right" style="cursor: pointer; color: rgb(143, 143, 143);" onclick="togglePopup()">You want to know something about
-  yourself?
-  <span class="popuptext" id="clientInfo"></span>
-</div>
-
-<script src="features.js"></script>
 </body>
-</html> 
 
+</html>
