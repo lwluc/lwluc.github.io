@@ -98,9 +98,9 @@ function playerMove() {
   UI.updateScreen(GAME_STATE);
 
   // now, let me make my move. as this is a robot, we need to invoke it after human has played his move
-  setTimeout(function() {
+  setTimeout(() => {
     robotMove();
-  }, 1000);
+  }, 500);
 }
 
 function doPostTurnActivities() {
@@ -109,15 +109,7 @@ function doPostTurnActivities() {
   if (GAME_STATE.isGameOver()) {
     switch (GAME_STATE.GAME_RESULT) {
       case GAME_STATE.RESULTS.playerXWon:
-        redirect('won');
-        break;
-
-      case GAME_STATE.RESULTS.playerOWon:
-        console.log('Robo won');
-        break;
-
-      case GAME_STATE.RESULTS.tie:
-        console.log('Tie');
+        setTimeout(() => redirect('won'), 2500);
         break;
     }
   } else {
@@ -127,9 +119,14 @@ function doPostTurnActivities() {
 }
 
 function starteGame(level) {
+  if (!level) {
+    level = document.getElementById('levelSelector').checked ? 'Medium' : 'Hard';
+  }
   logger.log(`Starting a new Game (level: ${level})`);
   GAME_STATE = new cGameState(level);
   logger.log(GAME_STATE);
+  UI.drawBoard();
+  activateBoard();
 }
 
 function activateBoard() {
@@ -150,7 +147,7 @@ function activateBoard() {
       if (event.target.checked) {
         starteGame('Hard');
       }
-      starteGame('Easy');
+      starteGame('Medium');
     },
     false
   );
@@ -159,8 +156,6 @@ function activateBoard() {
 function init() {
   logger.log('Initializing Tic Tac Toe');
   starteGame('Hard');
-  UI.drawBoard();
-  activateBoard();
 }
 
 window.addEventListener('DOMContentLoaded', init, false);

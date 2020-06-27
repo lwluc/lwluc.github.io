@@ -166,8 +166,6 @@ const AI = function() {
       return action;
     });
 
-    logger.enableLogging();
-
     logger.log('available_moves.length = ' + available_moves.length);
     for (let itr = 0; itr < available_moves.length; itr++) {
       logger.log(

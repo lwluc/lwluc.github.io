@@ -11,28 +11,12 @@ const svg_xo =
   '<svg class="crosses" aria-label="X" role="img" viewBox="0 0 128 128" style="width: 96px; height: 96px;"><path d="M16,16L112,112" style="stroke: rgb(108, 90, 73);"></path><path d="M112,16L16,112" style="stroke: rgb(108, 90, 73);"></path></svg>\
 	<svg class="noughts" aria-label="O" role="img" viewBox="0 0 128 128" style="width: 96px; height: 96px;"><path d="M64,16A48,48 0 1,0 64,112A48,48 0 1,0 64,16" style="stroke: rgb(155, 197, 157);"></path></svg>';
 
-const svg_horizontal =
-  '<svg class="crosses" aria-label="H" role="img" viewBox="0 0 128 128" ><path d="M0,64L128,64" style="stroke: rgb(0, 0, 0); stroke-width: 2.5px; "></path></svg>';
-const svg_vertical =
-  '<svg class="crosses" aria-label="V" role="img" viewBox="0 0 128 128" ><path d="M64,0L64,128" style="stroke: rgb(0, 0, 0); stroke-width: 2.5px; "></path></svg>';
-const svg_diag =
-  '<svg class="crosses" aria-label="D1" role="img" viewBox="0 0 128 128" ><path d="M16,16L128,128" style="stroke: rgb(0, 0, 0); stroke-width: 4px;"></path></svg>';
-
 const UI = {};
 
 UI.drawBoard = () => {
   logger.log('Entering into drawBoard');
 
   const gameboard_code =
-    '\
-			<div id="strike_row" class="container">' +
-    svg_horizontal +
-    '</div>\
-			<div id="strike_col" class="container">' +
-    svg_vertical +
-    '</div>\
-			<div id="strike_diag" class="container">' +
-    svg_diag +
     '</div>\
 			<table class="table text-center">\
 				<tr class="c_row_1">\
@@ -71,55 +55,23 @@ UI.drawSVG = (cell, parGameState) => {
 UI.animateGameOverCells = parGameState => {
   logger.log('Entering into animateGameOverCells');
 
-  const pos = parGameState.WINNING_LINE;
-  const timeout = 500;
+  if (parGameState.GAME_RESULT !== 'X' && parGameState.GAME_RESULT !== 'O') return; 
 
-  if (pos !== undefined) {
-    if (parGameState.SLASH_INFO.match(/strike_row/g)) {
-      setTimeout(() => {
-        document
-          .getElementById('strike_row')
-          .classList.add(parGameState.SLASH_INFO);
-        const div = document.getElementById('strike_row');
-        div.style.display = 'block';
-      }, timeout);
-    } else if (parGameState.SLASH_INFO.match(/strike_col/g)) {
-      setTimeout(() => {
-        document
-          .getElementById('strike_col')
-          .classList.add(parGameState.SLASH_INFO);
-        const div = document.getElementById('strike_col');
-        div.style.display = 'block';
-      }, timeout);
-    } else if (parGameState.SLASH_INFO.match(/strike_diag/g)) {
-      setTimeout(() => {
-        document
-          .getElementById('strike_diag')
-          .classList.add(parGameState.SLASH_INFO);
-        const div = document.getElementById('strike_diag');
-        div.style.display = 'block';
-      }, timeout);
-    }
-  }
+  const color = parGameState.GAME_RESULT  === 'X' ? 'lost' : 'won';
 
-  // this is too bad logic, n^3
-  for (let row = 0; row < 3; row++) {
-    logger.log('	row=' + row);
-    for (let col = 0; col < 3; col++) {
-      logger.log('		col=' + col);
-      if (
-        pos != undefined &&
-        ((row === pos[0][0] && col === pos[0][1]) ||
-          (row === pos[1][0] && col === pos[1][1]) ||
-          (row === pos[2][0] && col === pos[2][1]))
-      ) {
-        logger.log('		pos=[' + row + '][' + col + ']');
-        continue;
-      }
-      logger.log('		adding class for cell-' + (row + 1) + (col + 1));
-      document
-        .getElementById('cell-' + (row + 1) + (col + 1))
-        .classList.add('lost-cells-gameover');
+  if (parGameState.SLASH_INFO.row !== 0) {
+    document.getElementsByClassName(`c_row_${parGameState.SLASH_INFO.row}`)[0].classList.add(color);
+  } else if (parGameState.SLASH_INFO.col !== 0) {
+    [1, 2, 3].forEach(e => document.getElementById(`cell-${e}${parGameState.SLASH_INFO.col}`).classList.add(color)); 
+  } else if (parGameState.SLASH_INFO.diag !== 0) {
+    if (parGameState.SLASH_INFO.diag === 1) {
+      document.getElementById('cell-11').classList.add(color);
+      document.getElementById('cell-22').classList.add(color);
+      document.getElementById('cell-33').classList.add(color);
+    } else {
+      document.getElementById('cell-13').classList.add(color);
+      document.getElementById('cell-22').classList.add(color);
+      document.getElementById('cell-31').classList.add(color);
     }
   }
 };
@@ -132,30 +84,30 @@ UI.updateScreen = parGameState => {
       {
         if (parGameState.TURN === parGameState.SYMBOL.robot) {
           // When current marker is 'X', then the next step will be by 'O', hence the below logic
-          document.getElementById('messageboard').innerHTML = "<br>O's turn";
+          document.getElementById('messageboard').innerHTML = "<br>It's my turn";
         } else if (parGameState.TURN === parGameState.SYMBOL.human) {
-          document.getElementById('messageboard').innerHTML = "<br>X's turn";
+          document.getElementById('messageboard').innerHTML = "<br>It's your turn";
         }
       }
       break;
 
     case parGameState.RESULTS.playerXWon:
       {
-        document.getElementById('messageboard').innerHTML = '<br> Gameover';
+        document.getElementById('messageboard').innerHTML = '<br> You have <b>won</b>!<br> You will be redirected';
         UI.animateGameOverCells(parGameState);
       }
       break;
 
     case parGameState.RESULTS.playerOWon:
       {
-        document.getElementById('messageboard').innerHTML = '<br> Gameover';
+        document.getElementById('messageboard').innerHTML = '<br> <b>Gameover</b>! <a href="javascript:starteGame()">Play again</a> to view my page';
         UI.animateGameOverCells(parGameState);
       }
       break;
 
     case parGameState.RESULTS.tie:
       {
-        document.getElementById('messageboard').innerHTML = '<br> Gameover';
+        document.getElementById('messageboard').innerHTML = '<br> <b>Tie</b>! <a href="javascript:starteGame()">Play again</a> to view my page';
         UI.animateGameOverCells(parGameState);
       }
       break;

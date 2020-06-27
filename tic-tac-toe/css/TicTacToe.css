@@ -1,19 +1,25 @@
+.game-content {
+  padding: 50px 0 100px 0;
+  margin: 50px auto 0 auto;
+  width: 80%;
+}
+
 #gameboard {
-  padding: 10px;
+  padding-top: 10px;
   width: 300px;
   margin: auto;
 }
 
 /*this is for drawing the 'X' of svg class*/
 .crosses {
-  stroke: rgb(84, 84, 84);
+  stroke: rgb(108, 90, 73);
   fill: none;
   stroke-width: 8px;
 }
 
 /*this is for drawing the 'O' of svg class*/
 .noughts {
-  stroke: rgb(242, 235, 211);
+  stroke: rgb(155, 197, 157);
   fill: none;
   stroke-width: 8px;
 }
@@ -28,7 +34,7 @@
 path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: svg-write-ani 1.5s linear forwards;
+  animation: svg-write-ani 0.5s linear forwards;
 }
 
 /*
@@ -38,59 +44,7 @@ path {
 path:nth-of-type(2n) {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: svg-write-ani 1.5s linear 0.3s forwards;
-}
-
-/* get the fade feeling for svg when the cells are in the non-winning zone */
-@keyframes svg-fade-ani {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  25% {
-    opacity: 0.75;
-    transform: scale(0.7);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.5);
-  }
-  75% {
-    opacity: 0.25;
-    transform: scale(0.3);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-}
-
-.lost-cells-gameover {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 0;
-  animation: svg-fade-ani 2.5s linear 1.5s forwards;
-}
-
-/*get the zigzag moving combo for the winning cells*/
-@keyframes svg-zigzag-ani {
-  to {
-    stroke-dashoffset: 1000;
-  }
-}
-
-.win-cells-gameover {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 0;
-  animation-name: svg-zigzag-ani;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  /*
-    this is needed as we need to give time for the cells to be written before we fade them
-	or else the winning cell writing will be overlapped with the winning animation
-*/
-  animation-delay: 3s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation: svg-write-ani 0.5s linear 0.3s forwards;
 }
 
 #gameboard table {
@@ -103,17 +57,31 @@ path:nth-of-type(2n) {
 }
 
 .table td {
-  /*
-		This is for overriding the default styles of bootstrap where its showing a default top line 
-		which i do not need in this case.
-	*/
   border-top-width: 0px;
-  /*This is for removing the "hand" icon that we get for a button.*/
   cursor: default;
-  /*This is for removing the active/cursor box highlighter when a cell is clicked. it looked yuck*/
-  /*please visit http://www.outlinenone.com/ */
   outline: none;
+  /* border-top: solid 4px; */
 }
+
+table {
+  border-collapse: collapse;
+}
+table td {
+  border: 5px solid black; 
+}
+table tr:first-child td {
+  border-top: 0;
+}
+table tr td:first-child {
+  border-left: 0;
+}
+table tr:last-child td {
+  border-bottom: 0;
+}
+table tr td:last-child {
+  border-right: 0;
+}
+
 .c_row_2 {
   border-left: 0px;
   border-right: 0px;
@@ -130,36 +98,6 @@ path:nth-of-type(2n) {
   border-bottom: 0px;
   border-color: #000000;
   border-width: 4px;
-}
-
-#score-x {
-  background-color: #f1edec;
-  font-size: 0.9rem;
-  /*border-width: 0px;*/
-}
-
-.focus-score-x {
-  box-shadow: 0px 1px 1px;
-  border-color: #14bee9;
-  border-right-width: 0px;
-  border-top-width: 0px;
-  border-left-width: 2px;
-  border-bottom-width: 2px;
-}
-
-#score-o {
-  background-color: #f1edec;
-  font-size: 0.9rem;
-  /*border-width: 0px;*/
-}
-
-.focus-score-o {
-  box-shadow: 0px 1px 1px;
-  border-color: #14bee9;
-  border-right-width: 2px;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-bottom-width: 2px;
 }
 
 @keyframes rotater {
@@ -203,10 +141,6 @@ path:nth-of-type(2n) {
     transform: scale(1);
     opacity: 1;
   }
-  /*
-	0% { transform:rotate(0) scale(1) }
-	50% { transform:rotate(360deg) scale(2) }
-	100% { transform:rotate(720deg) scale(1) }*/
 }
 
 #gameboard span {
@@ -215,73 +149,17 @@ path:nth-of-type(2n) {
   top: 220px;
 }
 
-#strike_row,
-#strike_col,
-#strike_diag {
-  display: none;
-  position: absolute;
-  width: 300px;
-}
-
-/*this override is because we want the line to be drawn slower than the X and O marks*/
-#strike_row path,
-#strike_col path,
-#strike_diag_1 path,
-#strike_diag path {
-  animation: svg-write-ani 3s linear forwards;
-}
-
-/*this is good*/
-.strike_row_1 {
-  top: -80px;
-  left: 0px;
-}
-
-/*this is good*/
-.strike_row_2 {
-  top: 76px;
-  left: 0px;
-}
-
-/*this is good*/
-.strike_row_3 {
-  top: 122px;
-  left: 0px;
-}
-
-/*this is good*/
-.strike_col_1 {
-  top: 76px;
-  left: -83px;
-}
-
-/*this is good*/
-.strike_col_2 {
-  top: 76px;
-  left: 0px;
-}
-
-/*this is good*/
-.strike_col_3 {
-  top: 76px;
-  left: 94px;
-}
-
-.strike_diag_1 {
-  top: 0px;
-  left: -22px;
-  transform: rotate(2deg);
-}
-
-.strike_diag_2 {
-  top: 5px;
-  left: 11px;
-  transform: rotate(88deg);
-}
-
 .source {
   position: fixed;
   bottom: 20px;
   width: 100%;
   text-align: center;
+}
+
+.lost {
+  background-color: rgb(255, 82, 27);
+}
+
+.won {
+  background-color: rgb(0, 149, 73);
 }

@@ -21,9 +21,10 @@
   </head>
 
   <body>
-    <div class="content">
+    <div class="game-content">
       <article style="text-align: center;">
         <div>
+          <p>Choose a level:</p>
           <span>Chance to win</span>
           <label class="switch">
             <input id="levelSelector" type="checkbox" checked />
@@ -32,11 +33,9 @@
           <span>The real me</span>
         </div>
 
-        <div id="messageboard"></div>
+        <div id="gameboard" class="container"></div>
 
-        <div id="gameboard" class="container">
-          <!-- This code will be injected at runtime from the JS -->
-        </div>
+        <div id="messageboard"></div>
       </article>
     </div>
 
