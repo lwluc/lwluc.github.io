@@ -145,9 +145,9 @@ function activateBoard() {
     'change',
     event => {
       if (event.target.checked) {
-        starteGame('Hard');
+        return starteGame('Hard');
       }
-      starteGame('Medium');
+      return starteGame('Medium');
     },
     false
   );
