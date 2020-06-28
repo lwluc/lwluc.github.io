@@ -15,7 +15,7 @@ function printInfo() {
 printInfo();
 
 function redirect(code) {
-  const url = window.location.href;
+  const url = location.protocol + '//' + location.host + location.pathname;
   const redirectToPage = url.replace(
     'tic-tac-toe.html',
     `index.html?code=${code}`
@@ -98,9 +98,7 @@ function playerMove() {
   UI.updateScreen(GAME_STATE);
 
   // now, let me make my move. as this is a robot, we need to invoke it after human has played his move
-  setTimeout(() => {
-    robotMove();
-  }, 500);
+  setTimeout(() => robotMove(), 500);
 }
 
 function doPostTurnActivities() {
@@ -155,9 +153,29 @@ function activateBoard() {
   );
 }
 
+const showBackNav = () => {
+  const backNav = document.createElement('div');
+  backNav.id = 'backNav';
+  backNav.className = 'backNav';
+  backNav.innerHTML =
+    'Go <a href="javascript:redirect(\'again\')">back</a> to the page.';
+  document.body.appendChild(backNav);
+};
+
+const isPlayingAgain = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const status = urlParams.get('status');
+  if (status === 'again') {
+    showBackNav();
+    return true;
+  }
+  return false;
+};
+
 function init() {
   logger.log('Initializing Tic Tac Toe');
   starteGame('Hard');
+  isPlayingAgain();
 }
 
 window.addEventListener('DOMContentLoaded', init, false);
