@@ -523,3 +523,16 @@ article a:hover {
     bottom: 5%;
   }
 }
+
+.language-switch {
+  position: absolute;
+  z-index: 10000;
+  top: 2%;
+  right: 2%;
+}
+
+.pp-content {
+  padding: 40px 0;
+  margin: 10px auto 0 auto;
+  width: 80%;
+}
