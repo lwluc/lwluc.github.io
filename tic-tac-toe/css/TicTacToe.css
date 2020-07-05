@@ -56,6 +56,10 @@ path:nth-of-type(2n) {
   width: 96px;
 }
 
+#messageboard {
+  margin-bottom: 2%;;
+}
+
 .table td {
   border-top-width: 0px;
   cursor: default;
@@ -151,14 +155,14 @@ table tr td:last-child {
 
 .source {
   position: fixed;
-  bottom: 2%;
+  bottom: 1%;
   width: 100%;
   text-align: center;
 }
 
 .backNav {
   position: fixed;
-  bottom: 10%;
+  bottom: 5%;
   width: 100%;
   text-align: center;
 }

@@ -440,6 +440,7 @@ article a:hover {
   position: fixed;
   bottom: 2%;
   right: 2%;
+  margin-left: 2%;
 }
 
 .bottom-left {
@@ -520,6 +521,6 @@ article a:hover {
 
 @media (max-width: 455px) {
   .bottom-left {
-    bottom: 5%;
+    bottom: 10%;
   }
 }
