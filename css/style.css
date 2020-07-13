@@ -335,6 +335,20 @@ article a:hover {
   font-weight: bold;
 }
 
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #777;
+  text-align: center;
+}
+
+footer a {
+  border: none;
+  text-decoration: none;
+}
+
 .icons {
   margin-right: 6px;
 }
@@ -438,14 +452,14 @@ article a:hover {
 
 .bottom-right {
   position: fixed;
-  bottom: 2%;
+  bottom: 4%;
   right: 2%;
   margin-left: 2%;
 }
 
 .bottom-left {
   position: fixed;
-  bottom: 2%;
+  bottom: 3%;
   left: 2%;
 }
 
@@ -521,6 +535,19 @@ article a:hover {
 
 @media (max-width: 455px) {
   .bottom-left {
-    bottom: 10%;
+    bottom: 8%;
   }
+}
+
+.language-switch {
+  position: absolute;
+  z-index: 10000;
+  top: 2%;
+  right: 2%;
+}
+
+.pp-content {
+  padding: 40px 0;
+  margin: 10px auto 0 auto;
+  width: 80%;
 }

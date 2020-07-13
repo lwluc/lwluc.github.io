@@ -10,8 +10,24 @@
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <link rel="apple-touch-icon" href="img/apple-icon.png" />
 
-    <script src="protector.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-171270801-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-171270801-1');
+    </script>
+
+    <script src="js/protector.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -102,7 +118,11 @@
         <span class="popuptext" id="clientInfo"></span>
       </div>
 
-      <script src="features.js"></script>
+      <footer>
+        <a href="privacy-policy.html">Datenschutzerklärung</a>
+      </footer>
+
+      <script src="js/features.js"></script>
     </div>
   </body>
 </html>
