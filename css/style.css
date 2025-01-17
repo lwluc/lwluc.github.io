@@ -355,20 +355,20 @@ footer a {
   margin-right: 6px;
 }
 
-.twitter :hover {
-  color: #00aced;
+.icons svg {
+  height: 14px;
 }
 
 .gitlab :hover {
-  color: #fc6d27;
+  fill: #fc6d27;
 }
 
 .github :hover {
-  color: #0366d6;
+  fill: #0366d6;
 }
 
-.instagram :hover {
-  color: #8a3ab9;
+.muchskill :hover {
+  fill: rgb(242,211,97)
 }
 
 /* Popup */
