@@ -3,7 +3,7 @@
  * Inspired by: https://github.com/Mostafa-Samir/Tic-Tac-Toe-AI/blob/master/scripts/ai.js
  */
 
-import { log } from './logger.js';
+import { log, disableLogging } from './logger.js';
 
 /**
  * Represents an AI action (move) with a minimax value.
@@ -140,7 +140,7 @@ export class AI {
     }
 
     const availableCells = this.game.emptyCells();
-    log.disableLogging();
+    disableLogging();
 
     const availableMoves = availableCells.map(pos => {
       const action = new AIAction(pos);
