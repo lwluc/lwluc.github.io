@@ -68,28 +68,28 @@ export class AI {
 
   /**
    * Recursively computes the minimax value of a game state.
-   * @param {GameState} parGameState - The game state to evaluate.
+   * @param {GameState} gameState - The game state to evaluate.
    * @returns {number} The minimax value.
    */
-  minimaxValue(parGameState) {
+  minimaxValue(gameState) {
     log('Entering into minimaxValue = ' + this.cnt++);
 
-    if (parGameState.isGameOver()) {
-      return parGameState.score();
+    if (gameState.isGameOver()) {
+      return gameState.score();
     }
 
     let stateScore;
-    if (parGameState.TURN === parGameState.SYMBOL.human) {
+    if (gameState.TURN === gameState.SYMBOL.human) {
       stateScore = -1000;
     } else {
       stateScore = 1000;
     }
 
-    const availableCells = parGameState.emptyCells();
+    const availableCells = gameState.emptyCells();
     log('available_cells.length = ' + availableCells.length);
 
     const availableNextStates = availableCells.map(pos => {
-      const nextState = parGameState.clone();
+      const nextState = gameState.clone();
       nextState.markCell(pos[0], pos[1]);
       nextState.transitionTurn();
       return nextState;
@@ -100,7 +100,7 @@ export class AI {
     availableNextStates.forEach(nextState => {
       const nextScore = this.minimaxValue(nextState);
 
-      if (parGameState.TURN === parGameState.SYMBOL.human) {
+      if (gameState.TURN === gameState.SYMBOL.human) {
         if (nextScore > stateScore) {
           stateScore = nextScore;
         }
@@ -116,11 +116,12 @@ export class AI {
 
   /**
    * Gets the best move for the AI based on the current game state.
-   * @param {GameState} parGameState - The current game state.
+   * @param {GameState} gameState - The current game state.
+   * @param {number} probability - Probability to play optimally (0-100).
    * @returns {Array<[number, number]>} The best move [row, col].
    */
-  getMoveWrapper(probability) {
-    this.game = parGameState;
+  getMoveWrapper(gameState, probability) {
+    this.game = gameState;
 
     // Check for winning move
     let finishMoves = this.game.getFinishMoves(this.game.TURN);
@@ -209,7 +210,7 @@ export class AI {
    */
   takeAMediumMove() {
     log('Entering into takeAMediumMove');
-    return this.getMoveWrapper(50);
+    return this.getMoveWrapper(this.game, 50);
   }
 
   /**
@@ -218,7 +219,7 @@ export class AI {
    */
   takeAHardMove() {
     log('Entering into takeAHardMove');
-    return this.getMoveWrapper(100);
+    return this.getMoveWrapper(this.game, 100);
   }
 
   /**
