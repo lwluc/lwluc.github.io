@@ -1,19 +1,30 @@
-const changeLanguage = () => {
-  document.getElementById('languageSelector').addEventListener(
+/**
+ * Language switcher for privacy policy page.
+ */
+
+function changeLanguage() {
+  const languageSelector = document.getElementById('languageSelector');
+  if (!languageSelector) return;
+
+  languageSelector.addEventListener(
     'change',
     event => {
-      if (event.target.checked) {
-        document.getElementById('german').style.display = 'initial';
-        document.getElementById('english').style.display = 'none';
-      } else {
-        document.getElementById('german').style.display = 'none';
-        document.getElementById('english').style.display = 'initial';
+      const german = document.getElementById('german');
+      const english = document.getElementById('english');
+      
+      if (german && english) {
+        if (event.target.checked) {
+          german.style.display = 'initial';
+          english.style.display = 'none';
+        } else {
+          german.style.display = 'none';
+          english.style.display = 'initial';
+        }
       }
     },
     false
   );
-};
+}
 
-window.onload = () => {
-  changeLanguage();
-};
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', changeLanguage);

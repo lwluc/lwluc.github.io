@@ -1,18 +1,38 @@
-logger = function() {};
+/**
+ * Logger utility for debugging.
+ */
 
-let isLogging = true;
+let isLogging = false;
 
-logger.enableLogging = () => {
-  logger.log('Enabled Logging');
+/**
+ * Enables logging output.
+ */
+export function enableLogging() {
+  if (isLogging) return;
   isLogging = true;
-};
+  log('Enabled Logging');
+}
 
-logger.disableLogging = () => {
+/**
+ * Disables logging output.
+ */
+export function disableLogging() {
   isLogging = false;
-};
+}
 
-logger.log = function() {
+/**
+ * Logs a message to the console if logging is enabled.
+ * @param {...*} args - Arguments to log.
+ */
+export function log(...args) {
   if (isLogging) {
-    Array.from(arguments).forEach(a => console.log(a));
+    console.log(...args);
   }
+}
+
+// Export as default for backward compatibility
+export default {
+  enableLogging,
+  disableLogging,
+  log,
 };

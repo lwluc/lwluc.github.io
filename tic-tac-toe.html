@@ -11,13 +11,19 @@
     <link rel="apple-touch-icon" href="img/apple-icon.png" />
 
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="tic-tac-toe/css/TicTacToe.css" />
+    <link rel="stylesheet" href="css/TicTacToe.css" />
     <link rel="stylesheet" href="css/toggle.css" />
-    <script src="tic-tac-toe/js/logger.js"></script>
-    <script src="tic-tac-toe/js/game_state.js"></script>
-    <script src="tic-tac-toe/js/ai.js"></script>
-    <script src="tic-tac-toe/js/ui.js"></script>
-    <script src="tic-tac-toe/js/script.js"></script>
+    
+    <!-- Load logger first (no dependencies) -->
+    <script type="module" src="js/logger.js"></script>
+    <!-- Load game state (depends on logger) -->
+    <script type="module" src="js/game_state.js"></script>
+    <!-- Load AI (depends on logger and game_state) -->
+    <script type="module" src="js/ai.js"></script>
+    <!-- Load UI (depends on logger) -->
+    <script type="module" src="js/ui.js"></script>
+    <!-- Load main script (depends on all above) -->
+    <script type="module" src="js/script.js"></script>
   </head>
 
   <body>
@@ -36,6 +42,10 @@
         <div id="gameboard" class="container"></div>
 
         <div id="messageboard"></div>
+        
+        <p style="text-align: center; font-size: 0.9em; color: #666; margin-top: 20px;">
+          Tip: Open the console and type <code>skipGame()</code> to bypass the game.
+        </p>
       </article>
     </div>
 
