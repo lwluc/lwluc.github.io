@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Tests for lwluc.github.io</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    .test {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-left: 4px solid #ccc;
+    }
+    .test.passed {
+      border-left-color: #4CAF50;
+      background-color: #e8f5e9;
+    }
+    .test.failed {
+      border-left-color: #f44336;
+      background-color: #ffebee;
+    }
+    .test.skipped {
+      border-left-color: #ff9800;
+      background-color: #fff3e0;
+    }
+    code {
+      background: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tests for lwluc.github.io</h1>
+  <p>This page tests the core functionality of the Tic-Tac-Toe gatekeeper.</p>
+  
+  <h2>Test Results</h2>
+  <div id="test-results"></div>
+
+  <h2>Manual Tests</h2>
+  <p>For these tests, you need to interact with the page:</p>
+  <ol>
+    <li>Open the console (<code>F12</code> or <code>Ctrl+Shift+I</code>).</li>
+    <li>Type <code>skipGame()</code> and press Enter. You should be redirected to <code>index.html?code=hacker</code>.</li>
+    <li>Try to win the game. You should be redirected to <code>index.html?code=won</code>.</li>
+    <li>Check the console for errors (there should be none).</li>
+  </ol>
+
+  <script type="module">
+    // Import the modules we need to test
+    import { GameState } from '../tic-tac-toe/js/game_state.js';
+    import { AI } from '../tic-tac-toe/js/ai.js';
+    import { UI } from '../tic-tac-toe/js/ui.js';
+    import { log, disableLogging, enableLogging } from '../tic-tac-toe/js/logger.js';
+
+    // Disable logging for tests
+    disableLogging();
+
+    const results = [];
+    const testResults = document.getElementById('test-results');
+
+    /**
+     * Add a test result to the page.
+     */
+    function addResult(name, passed, message = '') {
+      const result = {
+        name,
+        passed,
+        message
+      };
+      results.push(result);
+      
+      const div = document.createElement('div');
+      div.className = `test ${passed ? 'passed' : 'failed'}`;
+      div.innerHTML = `<strong>${name}</strong>: ${passed ? '✅ PASSED' : '❌ FAILED'}${message ? `<br><small>${message}</small>` : ''}`;
+      testResults.appendChild(div);
+    }
+
+    /**
+     * Test 1: GameState can be instantiated.
+     */
+    try {
+      const game = new GameState('Hard');
+      addResult('GameState instantiation', true);
+    } catch (e) {
+      addResult('GameState instantiation', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Test 2: GameState has correct default values.
+     */
+    try {
+      const game = new GameState();
+      const checks = [
+        { name: 'SYMBOL.human is X', condition: game.SYMBOL.human === 'X' },
+        { name: 'SYMBOL.robot is O', condition: game.SYMBOL.robot === 'O' },
+        { name: 'TURN is human (X)', condition: game.TURN === game.SYMBOL.human },
+        { name: 'GAME_RESULT is incomplete', condition: game.GAME_RESULT === game.RESULTS.incomplete },
+        { name: 'BOARD is 3x3 empty', condition: game.BOARD.length === 3 && game.BOARD[0].length === 3 },
+      ];
+      
+      let allPassed = true;
+      checks.forEach(check => {
+        if (!check.condition) {
+          addResult(`GameState default: ${check.name}`, false);
+          allPassed = false;
+        }
+      });
+      
+      if (allPassed) {
+        addResult('GameState default values', true);
+      }
+    } catch (e) {
+      addResult('GameState default values', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Test 3: GameState.markCell() works.
+     */
+    try {
+      const game = new GameState();
+      const success = game.markCell(0, 0);
+      addResult('GameState.markCell()', success && game.BOARD[0][0] === 'X', 
+        success ? '' : 'markCell returned false');
+    } catch (e) {
+      addResult('GameState.markCell()', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Test 4: GameState.clone() works.
+     */
+    try {
+      const game = new GameState();
+      game.markCell(0, 0);
+      const clone = game.clone();
+      const isDifferent = clone !== game;
+      const isEqual = clone.BOARD[0][0] === game.BOARD[0][0];
+      addResult('GameState.clone()', isDifferent && isEqual, 
+        isDifferent ? (isEqual ? '' : 'Clone not equal to original') : 'Clone is same reference');
+    } catch (e) {
+      addResult('GameState.clone()', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Test 5: GameState.isGameOver() detects win.
+     */
+    try {
+      const game = new GameState();
+      game.markCell(0, 0); // X
+      game.transitionTurn();
+      game.markCell(1, 0); // O
+      game.transitionTurn();
+      game.markCell(0, 1); // X
+      game.transitionTurn();
+      game.markCell(1, 1); // O
+      game.transitionTurn();
+      game.markCell(0, 2); // X wins
+      const isOver = game.isGameOver();
+      addResult('GameState.isGameOver() detects win', isOver && game.GAME_RESULT === game.RESULTS.playerXWon);
+    } catch (e) {
+      addResult('GameState.isGameOver() detects win', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Test 6: AI can be instantiated.
+     */
+    try {
+      const ai = new AI();
+      addResult('AI instantiation', true);
+    } catch (e) {
+      addResult('AI instantiation', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Test 7: AI.getBestRobotMove() returns valid move.
+     */
+    try {
+      const game = new GameState('Easy');
+      const ai = new AI();
+      const move = ai.getBestRobotMove(game);
+      const isValid = Array.isArray(move) && move.length === 2 && 
+        typeof move[0] === 'number' && typeof move[1] === 'number';
+      addResult('AI.getBestRobotMove() returns valid move', isValid, 
+        isValid ? '' : `Invalid move: ${JSON.stringify(move)}`);
+    } catch (e) {
+      addResult('AI.getBestRobotMove()', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Test 8: Logger functions work.
+     */
+    try {
+      enableLogging();
+      log('Test message');
+      disableLogging();
+      log('This should not appear');
+      addResult('Logger functions', true);
+    } catch (e) {
+      addResult('Logger functions', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Test 9: UI object exists.
+     */
+    try {
+      const hasDrawBoard = typeof UI.drawBoard === 'function';
+      const hasDrawSVG = typeof UI.drawSVG === 'function';
+      const hasUpdateScreen = typeof UI.updateScreen === 'function';
+      addResult('UI object has required methods', hasDrawBoard && hasDrawSVG && hasUpdateScreen);
+    } catch (e) {
+      addResult('UI object has required methods', false, `Error: ${e.message}`);
+    }
+
+    /**
+     * Summary
+     */
+    const passed = results.filter(r => r.passed).length;
+    const failed = results.filter(r => !r.passed).length;
+    const total = results.length;
+    
+    const summary = document.createElement('div');
+    summary.style.marginTop = '20px';
+    summary.style.fontWeight = 'bold';
+    summary.innerHTML = `Summary: ${passed}/${total} tests passed ${failed > 0 ? `(${failed} failed)` : ''}`;
+    testResults.appendChild(summary);
+
+    // Set document title to show test results
+    document.title = `${passed}/${total} tests passed | lwluc.github.io Tests`;
+  </script>
+</body>
+</html>
