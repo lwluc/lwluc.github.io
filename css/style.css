@@ -371,6 +371,14 @@ footer a {
   fill: rgb(242,211,97)
 }
 
+.linkedin :hover {
+  fill: #0a66c2;
+}
+
+.sessionize :hover {
+  fill: #1ab394;
+}
+
 /* Popup */
 
 :root {
