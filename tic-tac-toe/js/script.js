@@ -27,12 +27,6 @@ function skipGame() {
   redirect('hacker');
 }
 
-function computerMove() {
-  logger.log('Entering into computerMove');
-  makeEaseMove();
-  isGameOver();
-}
-
 function robotMove() {
   logger.log('Entering into robotMove');
 
@@ -116,7 +110,7 @@ function doPostTurnActivities() {
   }
 }
 
-function starteGame(level) {
+function startGame(level) {
   if (!level) {
     level = document.getElementById('levelSelector').checked
       ? 'Medium'
@@ -145,9 +139,9 @@ function activateBoard() {
     'change',
     event => {
       if (event.target.checked) {
-        return starteGame('Hard');
+        return startGame('Hard');
       }
-      return starteGame('Medium');
+      return startGame('Medium');
     },
     false
   );
@@ -174,7 +168,7 @@ const isPlayingAgain = () => {
 
 function init() {
   logger.log('Initializing Tic Tac Toe');
-  starteGame('Hard');
+  startGame('Hard');
   isPlayingAgain();
 }
 

@@ -31,13 +31,11 @@ showSuccessMsg = code => {
   snackbar.id = 'snackbar';
   snackbar.innerHTML = text;
   snackbar.className = 'show';
-  window.onload = () => {
-    document.body.appendChild(snackbar);
-    setTimeout(() => {
-      snackbar.className = snackbar.className.replace('show', '');
-      document.body.removeChild(snackbar);
-    }, 3000);
-  };
+  document.body.appendChild(snackbar);
+  setTimeout(() => {
+    snackbar.className = snackbar.className.replace('show', '');
+    document.body.removeChild(snackbar);
+  }, 3000);
 };
 
 playAgain = () => {

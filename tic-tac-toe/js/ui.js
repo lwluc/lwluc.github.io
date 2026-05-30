@@ -7,9 +7,6 @@ const svg_x =
   '<svg class="crosses" aria-label="X" role="img" viewBox="0 0 128 128" ><path d="M16,16L112,112" style="stroke: rgb(108, 90, 73); "></path><path d="M112,16L16,112" style="stroke: rgb(108, 90, 73); "></path></svg>';
 const svg_o =
   '<svg class="noughts" aria-label="O" role="img" viewBox="0 0 128 128" ><path d="M64,16A48,48 0 1,0 64,112A48,48 0 1,0 64,16" style="stroke: rgb(155, 197, 157);"></path></svg>';
-const svg_xo =
-  '<svg class="crosses" aria-label="X" role="img" viewBox="0 0 128 128" style="width: 96px; height: 96px;"><path d="M16,16L112,112" style="stroke: rgb(108, 90, 73);"></path><path d="M112,16L16,112" style="stroke: rgb(108, 90, 73);"></path></svg>\
-	<svg class="noughts" aria-label="O" role="img" viewBox="0 0 128 128" style="width: 96px; height: 96px;"><path d="M64,16A48,48 0 1,0 64,112A48,48 0 1,0 64,16" style="stroke: rgb(155, 197, 157);"></path></svg>';
 
 const UI = {};
 
@@ -111,7 +108,7 @@ UI.updateScreen = parGameState => {
     case parGameState.RESULTS.playerOWon:
       {
         document.getElementById('messageboard').innerHTML =
-          '<br> <b>Gameover</b>! <a href="javascript:starteGame()">Play again</a> to view my page';
+          '<br> <b>Gameover</b>! <a href="javascript:startGame()">Play again</a> to view my page';
         UI.animateGameOverCells(parGameState);
       }
       break;
@@ -119,7 +116,7 @@ UI.updateScreen = parGameState => {
     case parGameState.RESULTS.tie:
       {
         document.getElementById('messageboard').innerHTML =
-          '<br> <b>Tie</b>! <a href="javascript:starteGame()">Play again</a> to view my page';
+          '<br> <b>Tie</b>! <a href="javascript:startGame()">Play again</a> to view my page';
         UI.animateGameOverCells(parGameState);
       }
       break;
