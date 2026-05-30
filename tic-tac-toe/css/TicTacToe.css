@@ -162,7 +162,7 @@ table tr td:last-child {
 
 .backNav {
   position: fixed;
-  bottom: 5%;
+  bottom: 15%;
   width: 100%;
   text-align: center;
 }
