@@ -356,7 +356,7 @@ footer a {
 }
 
 .icons svg {
-  height: 14px;
+  height: 16px;
 }
 
 .gitlab :hover {
@@ -377,6 +377,10 @@ footer a {
 
 .sessionize :hover {
   fill: #1ab394;
+}
+
+.blog :hover {
+  fill: #93c0ff;
 }
 
 /* Popup */
