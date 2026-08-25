@@ -1,0 +1,414 @@
+/* ============================================
+   3D Effects for luc weinbrecht portfolio
+   - Parallax depth for avatar
+   - Floating 3D social icons
+   - Extruded 3D text for name
+   ============================================ */
+
+/* Base 3D Perspective */
+#page {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform-style: preserve-3d;
+}
+
+/* 3D Container for parallax layers */
+.content-3d {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   1. PARALLAX DEPTH EFFECT
+   ============================================ */
+
+/* Background layer - moves slower */
+.parallax-layer.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-1px) scale(2);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Midground layer - avatar */
+.parallax-layer.midground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-0.5px) scale(1.5);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Foreground layer - text and content */
+.parallax-layer.foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ============================================
+   2. EXTRUDED 3D TEXT EFFECT
+   ============================================ */
+
+.title-3d {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.title-3d::before,
+.title-3d::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #3498db;
+  text-shadow: none;
+}
+
+.title-3d::before {
+  transform: translateZ(-20px);
+  color: rgba(52, 152, 219, 0.3);
+}
+
+.title-3d::after {
+  transform: translateZ(-40px);
+  color: rgba(52, 152, 219, 0.1);
+}
+
+/* 3D Text Container for perspective */
+.title-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   3. FLOATING 3D SOCIAL ICONS
+   ============================================ */
+
+.social-icons-3d {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  flex-wrap: wrap;
+}
+
+.social-icon-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-icon-3d svg {
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.social-icon-3d:hover svg {
+  transform: translateZ(10px) rotateY(10deg);
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+}
+
+/* Individual icon 3D positioning */
+.social-icon-3d:nth-child(1) { transform: translateZ(0px) rotateY(0deg); }
+.social-icon-3d:nth-child(2) { transform: translateZ(-5px) rotateY(5deg); }
+.social-icon-3d:nth-child(3) { transform: translateZ(-10px) rotateY(-5deg); }
+.social-icon-3d:nth-child(4) { transform: translateZ(-15px) rotateY(10deg); }
+.social-icon-3d:nth-child(5) { transform: translateZ(-20px) rotateY(-10deg); }
+.social-icon-3d:nth-child(6) { transform: translateZ(-25px) rotateY(15deg); }
+
+/* Icon label styling */
+.social-icon-3d span {
+  font-size: 0.7rem;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.social-icon-3d:hover span {
+  color: #3498db;
+  transform: translateY(-5px);
+}
+
+/* ============================================
+   AVATAR 3D EFFECT
+   ============================================ */
+
+.avatar-3d {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.avatar-3d:hover {
+  transform: translateZ(20px) rotateY(5deg);
+}
+
+.avatar-3d img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-style: preserve-3d;
+}
+
+/* Avatar glow effect */
+.avatar-3d::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(52, 152, 219, 0.3) 0%, transparent 70%);
+  z-index: -1;
+  transform: translateZ(-10px);
+}
+
+/* ============================================
+   DIVIDER 3D EFFECT
+   ============================================ */
+
+.divider-3d {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3498db, transparent);
+  margin: 1rem auto;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.divider-3d::before,
+.divider-3d::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+}
+
+.divider-3d::before {
+  transform: translateZ(-5px);
+  opacity: 0.7;
+}
+
+.divider-3d::after {
+  transform: translateZ(-10px);
+  opacity: 0.4;
+}
+
+/* ============================================
+   BIO TEXT 3D EFFECT
+   ============================================ */
+
+.bio-text-3d {
+  max-width: 600px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  position: relative;
+  transform-style: preserve-3d;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+.bio-text-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transform: translateZ(-10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* ============================================
+   FOOTER 3D EFFECT
+   ============================================ */
+
+.footer-3d {
+  position: relative;
+  margin-top: 4rem;
+  padding: 1rem;
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+.footer-3d small {
+  display: block;
+  margin-bottom: 1rem;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.footer-3d a {
+  color: #3498db;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+  transition: all 0.3s ease;
+}
+
+.footer-3d a:hover {
+  color: #2980b9;
+  border-bottom-color: #2980b9;
+  transform: translateZ(5px);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .title-3d {
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .social-icons-3d {
+    gap: 1rem;
+  }
+  
+  .social-icon-3d svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .avatar-3d {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .bio-text-3d {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-3d {
+    font-size: 1.5rem;
+  }
+  
+  .social-icon-3d span {
+    display: none;
+  }
+  
+  .content-3d {
+    padding: 1rem;
+  }
+}
+
+/* ============================================
+   SCROLL-BASED ANIMATION CLASSES
+   (Applied by JavaScript)
+   ============================================ */
+
+.scroll-animated {
+  opacity: 0;
+  transform: translateY(30px) translateZ(-20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-animated.visible {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+}
+
+/* Fade in from different directions */
+.scroll-animated.fade-left {
+  transform: translateX(-50px) translateZ(-20px);
+}
+
+.scroll-animated.fade-left.visible {
+  transform: translateX(0) translateZ(0);
+}
+
+.scroll-animated.fade-right {
+  transform: translateX(50px) translateZ(-20px);
+}
+
+.scroll-animated.fade-right.visible {
+  transform: translateX(0) translateZ(0);
+}
+
+/* ============================================
+   SCROLL PROGRESS EFFECTS
+   ============================================ */
+
+/* Container for scroll-based 3D transformations */
+.scroll-section {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Elements that will transform based on scroll position */
+.scroll-transform {
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+}
