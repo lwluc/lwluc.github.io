@@ -12,7 +12,6 @@
   
   <!-- Three.js from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_regular.typeface.js"></script>
   
@@ -34,7 +33,7 @@
     }
     
     body {
-      background: #0a0a0f;
+      background: #000000;
       color: #ffffff;
       cursor: default;
     }
@@ -66,15 +65,6 @@
       z-index: 1;
     }
     
-    #infoCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-    }
-    
     /* ============================================
        LOADING SCREEN
        ============================================ */
@@ -84,7 +74,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #0a0a0f;
+      background: #000000;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -179,7 +169,7 @@
     
     .title-sub {
       font-size: clamp(1rem, 2.5vw, 1.5rem);
-      color: #888;
+      color: #666;
       margin-bottom: 2rem;
       letter-spacing: 0.05em;
       opacity: 0;
@@ -189,7 +179,7 @@
     
     .bio-text {
       font-size: clamp(1rem, 2vw, 1.2rem);
-      color: #aaa;
+      color: #888;
       line-height: 1.8;
       margin-bottom: 3rem;
       opacity: 0;
@@ -235,7 +225,7 @@
     
     .social-icon span {
       font-size: 0.85rem;
-      color: #888;
+      color: #666;
       letter-spacing: 0.05em;
       transition: color 0.3s ease;
     }
@@ -270,7 +260,7 @@
     
     .footer-text {
       font-size: 0.85rem;
-      color: #666;
+      color: #444;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.8s ease forwards 1s;
@@ -379,12 +369,35 @@
     .block {
       display: block;
     }
+    
+    /* Scroll progress bar */
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 200;
+    }
+    
+    #scrollProgressBar {
+      height: 100%;
+      background: linear-gradient(90deg, #00ffff, #00a2ff, #ff2a6d);
+      width: 0%;
+      transition: width 0.1s ease;
+    }
   </style>
 </head>
 <body>
   <!-- Scroll Container for parallax effect -->
   <div id="scrollContainer">
     <div id="scrollContent"></div>
+  </div>
+  
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress">
+    <div id="scrollProgressBar"></div>
   </div>
   
   <!-- Three.js Container -->
@@ -473,15 +486,15 @@
     let mouseX = 0, mouseY = 0;
     let targetMouseX = 0, targetMouseY = 0;
     
-    // Colors - Dark theme with neon accents
+    // Colors - Clean black with neon accents
     const colors = {
-      background: 0x0a0a0f,
+      background: 0x000000,
       primary: 0x00ffff,   // Cyan
       secondary: 0x00a2ff, // Blue
       accent: 0xff2a6d,    // Pink/Red
       accent2: 0xfc6d26,  // Orange
       white: 0xffffff,
-      gray: 0x444444
+      gray: 0x333333
     };
     
     // ============================================
@@ -533,7 +546,8 @@
     function createScene() {
       scene = new THREE.Scene();
       scene.background = new THREE.Color(colors.background);
-      scene.fog = new THREE.Fog(colors.background, 1, 300);
+      // Very subtle fog for depth, almost invisible
+      scene.fog = new THREE.Fog(colors.background, 100, 500);
     }
     
     // ============================================
@@ -572,13 +586,13 @@
     // ============================================
     
     function createLights() {
-      // Ambient light - base lighting
-      const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
+      // Ambient light - very subtle
+      const ambientLight = new THREE.AmbientLight(0x333333, 0.2);
       scene.add(ambientLight);
       lights.push(ambientLight);
       
-      // Directional light - main light source (cyan)
-      const dirLight1 = new THREE.DirectionalLight(colors.primary, 1);
+      // Main directional light - cyan
+      const dirLight1 = new THREE.DirectionalLight(colors.primary, 0.8);
       dirLight1.position.set(50, 50, 50);
       dirLight1.castShadow = true;
       dirLight1.shadow.mapSize.width = 2048;
@@ -586,26 +600,26 @@
       scene.add(dirLight1);
       lights.push(dirLight1);
       
-      // Second directional light - for contrast (pink)
-      const dirLight2 = new THREE.DirectionalLight(colors.accent, 0.5);
+      // Second directional light - subtle contrast
+      const dirLight2 = new THREE.DirectionalLight(colors.accent, 0.3);
       dirLight2.position.set(-50, -30, 50);
       scene.add(dirLight2);
       lights.push(dirLight2);
       
-      // Point light 1 - for highlights (cyan)
-      const pointLight1 = new THREE.PointLight(colors.primary, 1, 150);
+      // Point light 1 - moving cyan highlight
+      const pointLight1 = new THREE.PointLight(colors.primary, 1, 200);
       pointLight1.position.set(30, 30, 30);
       scene.add(pointLight1);
       lights.push(pointLight1);
       
-      // Point light 2 - for depth (orange)
-      const pointLight2 = new THREE.PointLight(colors.accent2, 0.7, 150);
+      // Point light 2 - moving orange accent
+      const pointLight2 = new THREE.PointLight(colors.accent2, 0.5, 200);
       pointLight2.position.set(-40, -20, -30);
       scene.add(pointLight2);
       lights.push(pointLight2);
       
-      // Hemisphere light for ambient color
-      const hemiLight = new THREE.HemisphereLight(colors.primary, colors.accent, 0.2);
+      // Hemisphere light for subtle ambient color
+      const hemiLight = new THREE.HemisphereLight(colors.primary, colors.accent, 0.1);
       scene.add(hemiLight);
       lights.push(hemiLight);
     }
@@ -683,6 +697,7 @@
         
         const mesh = new THREE.Mesh(geometry, material);
         
+        // Position shapes in layers based on scroll
         mesh.position.set(
           (Math.random() - 0.5) * 300,
           (Math.random() - 0.5) * 300,
@@ -703,7 +718,9 @@
           },
           floatSpeed: Math.random() * 0.5 + 0.5,
           floatOffset: Math.random() * Math.PI * 2,
-          basePosition: mesh.position.clone()
+          basePosition: mesh.position.clone(),
+          baseScale: 1,
+          scrollDepth: Math.random() * 200 - 100  // Each shape has its own scroll depth
         };
         
         mesh.castShadow = true;
@@ -719,10 +736,6 @@
     // ============================================
     
     function create3DText() {
-      // Font is loaded from CDN, we'll use the built-in Three.js font
-      // Since we can't use require in browser, we need to load it differently
-      // For now, let's create a placeholder and load the font properly
-      
       const fontLoader = new THREE.FontLoader();
       
       // Load Helvetiker font
@@ -786,11 +799,12 @@
     }
     
     // ============================================
-    // SCROLL HANDLING
+    // SCROLL HANDLING - Enhanced with parallax effects
     // ============================================
     
     function setupScroll() {
       const scrollContainer = document.getElementById('scrollContainer');
+      const progressBar = document.getElementById('scrollProgressBar');
       
       scrollContainer.addEventListener('scroll', () => {
         scrollPosition = scrollContainer.scrollTop;
@@ -799,17 +813,21 @@
         const maxScroll = scrollContainer.scrollHeight - window.innerHeight;
         const scrollPercent = Math.min(1, scrollPosition / maxScroll);
         
-        // Camera moves in a curved path through 3D space
-        const radius = 200;
+        // Update progress bar
+        progressBar.style.width = (scrollPercent * 100) + '%';
+        
+        // Camera moves in a dramatic curved path through 3D space
+        const radius = 250;
         const theta = scrollPercent * Math.PI * 2;
         
-        // Create a spiral/circular motion
+        // Enhanced spiral motion with more drama
         camera.position.x = Math.sin(theta * 0.5) * radius * 0.8;
-        camera.position.y = scrollPercent * 150 - 75;
-        camera.position.z = Math.cos(theta * 0.3) * radius * 0.6 + 120;
+        camera.position.y = scrollPercent * 180 - 90;
+        camera.position.z = Math.cos(theta * 0.4) * radius * 0.7 + 120;
         
-        // Look at center with offset
-        camera.lookAt(0, scrollPercent * 50 - 25, -50);
+        // Dynamic lookAt that follows the path
+        const lookAtY = scrollPercent * 60 - 30;
+        camera.lookAt(0, lookAtY, -80);
         
         // Hide scroll indicator after first scroll
         const scrollIndicator = document.getElementById('scrollIndicator');
@@ -822,6 +840,47 @@
         // Update overlay opacity - fade out as you scroll
         const overlay = document.getElementById('infoOverlay');
         overlay.style.opacity = Math.max(0, 1 - scrollPercent * 2);
+        
+        // ===== SCROLL PARALLAX EFFECTS =====
+        // Move shapes based on scroll position and their depth
+        shapes.forEach((shape, index) => {
+          const depth = shape.userData.scrollDepth;
+          const scrollFactor = scrollPercent * depth * 0.01;
+          
+          // Apply parallax: shapes with different depths move at different speeds
+          shape.position.x += Math.sin(theta * 0.3 + index) * scrollFactor * 2;
+          shape.position.y += Math.cos(theta * 0.2 + index) * scrollFactor * 1.5;
+          shape.position.z += scrollFactor * 0.5;
+          
+          // Scale effect: shapes grow slightly as you scroll
+          const scaleFactor = 1 + scrollPercent * 0.3;
+          shape.scale.setScalar(scaleFactor);
+          
+          // Rotation effect: shapes spin based on scroll
+          shape.rotation.x += scrollPercent * 0.01 * index;
+          shape.rotation.y += scrollPercent * 0.01 * (index * 0.5);
+        });
+        
+        // Move particles with scroll for depth effect
+        particles.forEach((particleMesh, index) => {
+          const particleGeometry = particleMesh.geometry;
+          if (particleGeometry.attributes.position) {
+            const positions = particleGeometry.attributes.position.array;
+            // Apply subtle parallax to particles
+            for (let i = 0; i < positions.length; i += 3) {
+              const depthFactor = (i / positions.length) * 0.5;
+              positions[i] += Math.sin(theta * 0.1) * scrollPercent * depthFactor * 0.1;
+              positions[i + 1] += Math.cos(theta * 0.15) * scrollPercent * depthFactor * 0.05;
+            }
+            particleGeometry.attributes.position.needsUpdate = true;
+          }
+        });
+        
+        // Text parallax: text moves slightly backwards as you scroll
+        textMeshes.forEach((mesh, index) => {
+          const depth = -100 - (index * 10);
+          mesh.position.z = depth + (scrollPercent * 50);
+        });
       });
     }
     
@@ -867,27 +926,26 @@
         particleMesh.rotation.y += 0.00003 * (index * 0.7);
       });
       
-      // Animate floating shapes
+      // Animate floating shapes with additional time-based movement
       shapes.forEach((shape, index) => {
         shape.rotation.x += shape.userData.rotationSpeed.x;
         shape.rotation.y += shape.userData.rotationSpeed.y;
         shape.rotation.z += shape.userData.rotationSpeed.z;
         
-        // Floating animation (sin wave)
+        // Floating animation (sin wave) - subtle
         const floatFactor = Math.sin(time * shape.userData.floatSpeed + shape.userData.floatOffset);
-        shape.position.y = shape.userData.basePosition.y + floatFactor * 3;
-        shape.position.x = shape.userData.basePosition.x + Math.cos(time * 0.7 + index) * 1;
+        shape.position.y = shape.userData.basePosition.y + floatFactor * 2;
       });
       
-      // Animate lights
+      // Animate lights - creates dynamic lighting effects
       if (lights.length > 2) {
-        lights[2].position.x = Math.sin(time * 0.3) * 40;
-        lights[2].position.y = Math.cos(time * 0.5) * 40;
-        lights[2].position.z = Math.cos(time * 0.4) * 30;
+        lights[2].position.x = Math.sin(time * 0.3) * 50;
+        lights[2].position.y = Math.cos(time * 0.5) * 50;
+        lights[2].position.z = Math.cos(time * 0.4) * 40;
         
-        lights[3].position.x = Math.cos(time * 0.4) * 50;
-        lights[3].position.y = Math.sin(time * 0.3) * 30;
-        lights[3].position.z = Math.sin(time * 0.6) * 40;
+        lights[3].position.x = Math.cos(time * 0.4) * 60;
+        lights[3].position.y = Math.sin(time * 0.3) * 40;
+        lights[3].position.z = Math.sin(time * 0.6) * 50;
       }
       
       // Smooth camera movement based on mouse
@@ -896,7 +954,7 @@
       
       // Text glow pulse
       textMeshes.forEach((mesh, index) => {
-        if (mesh.material.emissiveIntensity) {
+        if (mesh.material && mesh.material.emissiveIntensity) {
           mesh.material.emissiveIntensity = 0.2 + Math.sin(time * 2 + index) * 0.05;
         }
       });
