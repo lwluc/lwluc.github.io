@@ -117,7 +117,7 @@
       max-width: 90vw;
       z-index: 10;
       transition: transform 0.1s ease-out;
-      transform-origin: center 160px;
+      transform-origin: center 100px;
     }
     
     /* Road line - very subtle */
@@ -205,7 +205,7 @@
       align-items: center;
       gap: 0.75rem;
       transition: all 0.2s ease;
-      color: #515154; /* Darker for better visibility */
+      color: #1d1d1f; /* Dark for maximum visibility */
     }
     
     .social-icon:hover {
@@ -222,7 +222,7 @@
     .social-icon span {
       font-size: 13px;
       font-weight: 400;
-      color: #515154;
+      color: #1d1d1f;
       letter-spacing: 0.01em;
     }
     
@@ -352,90 +352,96 @@
   <!-- Hero Section with Bike -->
   <section id="hero" class="scroll-section">
     <div id="bikeContainer">
-      <!-- Professional Racing Bike SVG -->
-      <!-- Source: Custom design inspired by premium bike illustrations -->
-      <svg id="svgBike" viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
-        <!-- Frame - Main tube -->
-        <path d="M80 150 Q150 130 250 140 Q300 145 350 150" stroke="#1d1d1f" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Professional Racing Bike SVG - Ultra-sleek design -->
+      <!-- Custom high-end road bike with aerodynamic frame -->
+      <svg id="svgBike" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Frame - Top tube (slope design) -->
+        <path d="M70 140 Q120 132 200 138" stroke="#1d1d1f" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <!-- Frame - Down tube (aero) -->
+        <path d="M200 138 Q180 155 140 175" stroke="#1d1d1f" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         
         <!-- Frame - Seat tube -->
-        <path d="M250 140 L250 90" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
+        <path d="M200 138 L210 100" stroke="#1d1d1f" stroke-width="10" stroke-linecap="round"/>
         
-        <!-- Frame - Down tube -->
-        <path d="M250 140 Q220 170 150 190" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
+        <!-- Frame - Seat stay (thin) -->
+        <path d="M210 100 Q240 110 280 140" stroke="#1d1d1f" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         
-        <!-- Frame - Chain stay -->
-        <path d="M150 190 L200 210" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
-        
-        <!-- Frame - Seat stay -->
-        <path d="M250 90 Q280 100 350 150" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
+        <!-- Frame - Chain stay (thin) -->
+        <path d="M140 175 L200 185" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
         
         <!-- Head tube -->
-        <path d="M80 150 L80 120" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
+        <path d="M70 140 L70 120" stroke="#1d1d1f" stroke-width="10" stroke-linecap="round"/>
         
-        <!-- Fork -->
-        <path d="M80 120 Q50 150 30 200" stroke="#1d1d1f" stroke-width="10" stroke-linecap="round"/>
-        <path d="M80 120 Q110 150 140 200" stroke="#1d1d1f" stroke-width="10" stroke-linecap="round"/>
+        <!-- Fork (thin blades) -->
+        <path d="M70 120 Q45 145 30 175" stroke="#1d1d1f" stroke-width="5" stroke-linecap="round"/>
+        <path d="M70 120 Q95 145 120 175" stroke="#1d1d1f" stroke-width="5" stroke-linecap="round"/>
         
-        <!-- Handlebar (drop style) -->
-        <path d="M80 120 Q100 100 140 100 Q180 100 200 110" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M200 110 L230 120" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
+        <!-- Handlebar - Drop handlebar (pro road bike) -->
+        <path d="M70 120 Q85 110 110 105 Q135 100 160 105 Q170 107 175 115" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M175 115 L195 120" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
         
-        <!-- Front wheel -->
-        <circle cx="60" cy="200" r="35" fill="none" stroke="#1d1d1f" stroke-width="4"/>
-        <circle cx="60" cy="200" r="30" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
-        <!-- Front wheel spokes -->
-        <g stroke="#c6c6c8" stroke-width="1">
-          <line x1="60" y1="200" x2="60" y2="165"/>
-          <line x1="60" y1="200" x2="60" y2="235"/>
-          <line x1="60" y1="200" x2="95" y2="200"/>
-          <line x1="60" y1="200" x2="25" y2="200"/>
-          <line x1="60" y1="200" x2="77" y2="183"/>
-          <line x1="60" y1="200" x2="77" y2="217"/>
-          <line x1="60" y1="200" x2="43" y2="183"/>
-          <line x1="60" y1="200" x2="43" y2="217"/>
+        <!-- Stem -->
+        <path d="M70 120 L85 115" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
+        
+        <!-- Front wheel (large, pro road) -->
+        <circle cx="55" cy="175" r="40" fill="none" stroke="#1d1d1f" stroke-width="3"/>
+        <circle cx="55" cy="175" r="36" fill="none" stroke="#e5e5ea" stroke-width="1"/>
+        <!-- Front wheel spokes (radial pattern) -->
+        <g stroke="#c6c6c8" stroke-width="0.8">
+          <line x1="55" y1="175" x2="55" y2="135"/>
+          <line x1="55" y1="175" x2="55" y2="215"/>
+          <line x1="55" y1="175" x2="15" y2="175"/>
+          <line x1="55" y1="175" x2="95" y2="175"/>
+          <line x1="55" y1="175" x2="78" y2="153"/>
+          <line x1="55" y1="175" x2="78" y2="197"/>
+          <line x1="55" y1="175" x2="32" y2="153"/>
+          <line x1="55" y1="175" x2="32" y2="197"/>
         </g>
         
-        <!-- Back wheel -->
-        <circle cx="280" cy="200" r="35" fill="none" stroke="#1d1d1f" stroke-width="4"/>
-        <circle cx="280" cy="200" r="30" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
-        <!-- Back wheel spokes -->
-        <g stroke="#c6c6c8" stroke-width="1">
-          <line x1="280" y1="200" x2="280" y2="165"/>
-          <line x1="280" y1="200" x2="280" y2="235"/>
-          <line x1="280" y1="200" x2="315" y2="200"/>
-          <line x1="280" y1="200" x2="245" y2="200"/>
-          <line x1="280" y1="200" x2="297" y2="183"/>
-          <line x1="280" y1="200" x2="297" y2="217"/>
-          <line x1="280" y1="200" x2="263" y2="183"/>
-          <line x1="280" y1="200" x2="263" y2="217"/>
+        <!-- Rear wheel (large, pro road) -->
+        <circle cx="270" cy="175" r="40" fill="none" stroke="#1d1d1f" stroke-width="3"/>
+        <circle cx="270" cy="175" r="36" fill="none" stroke="#e5e5ea" stroke-width="1"/>
+        <!-- Rear wheel spokes (radial pattern) -->
+        <g stroke="#c6c6c8" stroke-width="0.8">
+          <line x1="270" y1="175" x2="270" y2="135"/>
+          <line x1="270" y1="175" x2="270" y2="215"/>
+          <line x1="270" y1="175" x2="230" y2="175"/>
+          <line x1="270" y1="175" x2="310" y2="175"/>
+          <line x1="270" y1="175" x2="293" y2="153"/>
+          <line x1="270" y1="175" x2="293" y2="197"/>
+          <line x1="270" y1="175" x2="247" y2="153"/>
+          <line x1="270" y1="175" x2="247" y2="197"/>
         </g>
         
-        <!-- Saddle -->
-        <ellipse cx="250" cy="85" rx="12" ry="6" fill="#1d1d1f" stroke="#86868b" stroke-width="1"/>
-        <path d="M245 85 L255 85" stroke="#1d1d1f" stroke-width="3" stroke-linecap="round"/>
+        <!-- Saddle (minimal pro design) -->
+        <ellipse cx="210" cy="95" rx="10" ry="4" fill="#1d1d1f" stroke="none"/>
+        <path d="M205 95 L215 95" stroke="#86868b" stroke-width="2" stroke-linecap="round"/>
         
-        <!-- Seat post -->
-        <path d="M250 90 L250 110" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
+        <!-- Seat post (thin carbon look) -->
+        <path d="M208 100 L210 138" stroke="#86868b" stroke-width="4" stroke-linecap="round"/>
+        
+        <!-- Crank arms -->
+        <path d="M160 175 L130 175" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
+        <path d="M160 175 L190 175" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
         
         <!-- Pedals -->
-        <circle cx="150" cy="200" r="4" fill="#1d1d1f"/>
-        <circle cx="150" cy="200" r="10" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
-        <circle cx="150" cy="160" r="4" fill="#1d1d1f"/>
-        <circle cx="150" cy="160" r="10" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
+        <circle cx="130" cy="175" r="3" fill="#1d1d1f"/>
+        <circle cx="130" cy="175" r="8" fill="none" stroke="#c6c6c8" stroke-width="1"/>
+        <circle cx="190" cy="175" r="3" fill="#1d1d1f"/>
+        <circle cx="190" cy="175" r="8" fill="none" stroke="#c6c6c8" stroke-width="1"/>
         
-        <!-- Chain -->
-        <path d="M150 160 L150 195 Q170 200 190 200" stroke="#86868b" stroke-width="2" stroke-dasharray="3,2" stroke-linecap="round"/>
-        <path d="M190 200 L240 200" stroke="#86868b" stroke-width="2" stroke-dasharray="3,2" stroke-linecap="round"/>
+        <!-- Chain (subtle) -->
+        <path d="M160 175 L160 170 Q170 168 180 170" stroke="#86868b" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M180 170 L220 170" stroke="#86868b" stroke-width="1.5" stroke-linecap="round"/>
         
-        <!-- Accent lines (Apple blue) -->
-        <path d="M80 150 Q150 130 250 140" stroke="#0071e3" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
-        <path d="M250 140 L250 90" stroke="#0071e3" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
-        <path d="M250 90 Q280 100 350 150" stroke="#0071e3" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+        <!-- Accent lines (subtle blue highlights) -->
+        <path d="M70 140 Q120 132 200 138" stroke="#0071e3" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M200 138 L210 100" stroke="#0071e3" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
         
-        <!-- Water bottle -->
-        <ellipse cx="200" cy="175" rx="4" ry="8" fill="#0071e3" opacity="0.8"/>
-        <rect x="198" y="175" width="4" height="15" fill="#0071e3" opacity="0.8" rx="1"/>
+        <!-- Water bottle (sleek) -->
+        <ellipse cx="150" cy="160" rx="3" ry="6" fill="#0071e3" opacity="0.7"/>
+        <rect x="148" y="160" width="4" height="12" fill="#0071e3" opacity="0.7" rx="1"/>
       </svg>
     </div>
     <div id="scrollIndicator">
@@ -485,32 +491,32 @@
     <div class="info-section" id="info6">
       <div class="social-icons">
         <a href="https://github.com/lwluc" target="_blank" class="social-icon github">
-          <svg viewBox="0 0 496 512">
+          <svg viewBox="0 0 496 512" fill="currentColor">
             <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1z"/>
           </svg>
         </a>
         <a href="https://gitlab.com/lwluc" target="_blank" class="social-icon gitlab">
-          <svg viewBox="0 0 512 512">
+          <svg viewBox="0 0 512 512" fill="currentColor">
             <path d="M105.2 24.9c-3.1-8.9-15.7-8.9-18.9 0L29.8 199.7h132c-.1 0-56.6-174.8-56.6-174.8zM.9 287.7c-2.6 8 .3 16.9 7.1 22l247.9 184-226.2-294zm160.8-88l94.3 294 94.3-294zm349.4 88l-28.8-88-226.3 294 247.9-184c6.9-5.1 9.7-14 7.2-22zM425.7 24.9c-3.1-8.9-15.7-8.9-18.9 0l-56.6 174.8h132z"/>
           </svg>
         </a>
         <a href="https://www.linkedin.com/in/luc-weinbrecht" target="_blank" class="social-icon linkedin">
-          <svg viewBox="0 0 448 512">
+          <svg viewBox="0 0 448 512" fill="currentColor">
             <path d="M416 160c53.04 0 96-42.96 96-96s-42.96-96-96-96-96 42.96-96 96 42.96 96 96 96zM272 160c53.04 0 96-42.96 96-96s-42.96-96-96-96-96 42.96-96 96 42.96 96 96 96zM128 160c53.04 0 96-42.96 96-96s-42.96-96-96-96-96 42.96-96 96 42.96 96 96 96zM160 448H80V256h80v192zm-32-160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48c0 26.5-21.5 48-48 48zm256 160h-80V256h80v192zm-32-160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48c0 26.5-21.5 48-48 48z"/>
           </svg>
         </a>
         <a href="https://listed.to/@lwluc" target="_blank" class="social-icon blog">
-          <svg viewBox="0 0 640 640">
+          <svg viewBox="0 0 640 640" fill="currentColor">
             <path d="M319.8 354.5C265.9 354.5 264 354.7 259.6 358.6C256.1 361.7 253.9 368 254.5 372.5C255.2 377.2 259.3 382.6 263.7 384.5C265.9 385.5 277.8 386.2 320 385.7L367.9 385.1L377.1 383.6C386.1 378.5 387.6 366.2 380.2 359.2C374.9 354.5 375.2 354.5 319.8 354.5zM543.2 484.6C539.7 513 520.2 535 492.1 542.1C484.9 543.9 482.4 544 319.2 543.9C161.4 543.9 153.3 543.8 147.2 542.1C138.8 539.9 131.6 536.6 124.9 532.1C119.3 528.3 111 520.3 107.9 515.7C104.1 510.1 99.7 500.4 97.9 493.7C96.1 487 96 484.3 96 320.3C96 157.2 96 153.7 97.8 146.6C104.1 121.9 123.7 103 149 97.4C156.3 95.8 481.1 95.5 489 97.1C510.2 101.4 526.9 114.2 536.6 133.5C544.3 148.8 543.6 132 543.9 314.1C544.1 429.9 543.9 478.6 543.2 484.6zM457.8 299.4C456.7 294.4 453.6 289.8 450.1 287.9C449 287.3 442.1 286.6 434.6 286.2C422.2 285.6 420.8 285.4 416.8 283.1C410.6 279.5 408.9 275.5 408.8 264.8C408.8 244.4 400.3 225.4 383.5 208.3C371.5 196.1 358.2 187.8 342.9 183.2C339.3 182.1 331.1 181.7 303.7 181.4C260.8 180.9 251.2 181.8 236.6 187.6C209.6 198.3 190.3 221 183.2 250C181.9 255.4 181.6 264.2 181.3 314.3C180.9 377.1 181.3 386.4 185.3 398.8C195 429.5 222.4 452.2 249.9 457.2C259.1 458.9 372.1 459.3 383.6 457.7C403.7 455 419.5 446.9 434.3 431.8C445 420.9 451.7 409 456.1 393.3C459.3 382.4 459 304.9 457.8 299.4z"/>
           </svg>
         </a>
         <a href="https://sessionize.com/luc-weinbrecht/" target="_blank" class="social-icon sessionize">
-          <svg height="48" viewBox="0 0 48 48">
+          <svg height="48" viewBox="0 0 48 48" fill="currentColor">
             <path d="M24 0c13.255 0 24 10.745 24 24v20a4 4 0 01-4 4H29l-.003-.338c-.097-5.789-2.694-9.804-7.417-11.92L48 24l-.639-.218C41.644 21.784 36.857 18.857 33 15c-3.857-3.857-6.784-8.644-8.782-14.361L24 0 8 36c0 1.333.333 2.333 1 3 .667.667 1.667 1 3 1l.374.002C19.915 40.082 23 42.592 23 48H4a4 4 0 01-4-4V4a4 4 0 014-4h20zm14.414 9.586c-1.562-1.562-3.461-2.195-4.242-1.414-.781.78-.148 2.68 1.414 4.242 1.562 1.562 3.461 2.195 4.242 1.414.781-.78.148-2.68-1.414-4.242z"/>
           </svg>
         </a>
         <a href="https://app.muchskills.com/user/lwluc" target="_blank" class="social-icon muchskill">
-          <svg viewBox="0 0 448 512">
+          <svg viewBox="0 0 448 512" fill="currentColor">
             <path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9l0 57.1c0 70.7-57.3 128-128 128s-128-57.3-128-128l0-57.1L48 93.3l0 65.1 15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9l-32 0c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4l0-71.8C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7L30.7 512C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/>
           </svg>
         </a>
@@ -560,22 +566,22 @@
         bikeProgress = Math.min(1, scrollPosition / docHeight);
         
         // Bike moves to the right and slightly down, with lean
-        const bikeX = bikeProgress * 250;
+        const bikeX = bikeProgress * 300;
         const bikeY = bikeProgress * 10;
-        const bikeRotate = bikeProgress * 8;
+        const bikeRotate = bikeProgress * 6;
         
         bike.style.transform = `translate(${bikeX}px, ${bikeY}px) rotate(${bikeRotate}deg)`;
         
-        // Wheels rotate
-        const frontWheel = bike.querySelector('circle[cx="60"][cy="200"]');
-        const backWheel = bike.querySelector('circle[cx="280"][cy="200"]');
+        // Wheels rotate - updated for new coordinates
+        const frontWheel = bike.querySelector('circle[cx="55"][cy="175"]');
+        const backWheel = bike.querySelector('circle[cx="270"][cy="175"]');
         const wheelRotation = bikeProgress * 720; // Two full rotations
         
         if (frontWheel) frontWheel.style.transform = `rotate(${wheelRotation}deg)`;
         if (backWheel) backWheel.style.transform = `rotate(${wheelRotation}deg)`;
         
-        // Pedals rotate
-        const pedals = bike.querySelectorAll('circle[r="10"]');
+        // Pedals rotate - updated for new pedal size (r=8)
+        const pedals = bike.querySelectorAll('circle[r="8"]');
         pedals.forEach((pedal, index) => {
           pedal.style.transform = `rotate(${wheelRotation * (index === 0 ? 1 : -1)}deg)`;
         });
@@ -613,7 +619,7 @@
         // Adjust bike size based on viewport
         const bikeContainer = document.getElementById('bikeContainer');
         const containerHeight = bikeContainer.clientHeight;
-        const scale = containerHeight / 250;
+        const scale = containerHeight / 200;
         bike.style.transform = `scale(${scale})`;
       });
       
