@@ -9,7 +9,7 @@
   <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
   <link rel="icon" type="image/png" href="img/favicon.png" />
   <link rel="apple-touch-icon" href="img/apple-icon.png" />
-  
+
   <style>
     /* ============================================
        APPLE/FIGMA INSPIRED CLEAN STYLE
@@ -19,11 +19,11 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     html {
       scroll-behavior: smooth;
     }
-    
+
     body {
       width: 100%;
       min-height: 100vh;
@@ -33,7 +33,7 @@
       line-height: 1.5;
       overflow-x: hidden;
     }
-    
+
     /* Loading Screen */
     #loader {
       position: fixed;
@@ -48,17 +48,17 @@
       z-index: 1000;
       transition: opacity 0.4s ease, visibility 0.4s ease;
     }
-    
+
     #loader.hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
-    
+
     .loader-content {
       text-align: center;
     }
-    
+
     .loader-spinner {
       width: 40px;
       height: 40px;
@@ -68,18 +68,18 @@
       animation: spin 1s linear infinite;
       margin: 0 auto 1rem;
     }
-    
+
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    
+
     .loader-text {
       color: #86868b;
       font-size: 14px;
       font-weight: 400;
       letter-spacing: -0.01em;
     }
-    
+
     /* Main scroll sections */
     .scroll-section {
       min-height: 100vh;
@@ -91,13 +91,13 @@
       padding: 2rem;
       background: #f5f5f7;
     }
-    
+
     /* Hero section with bike */
     #hero {
       min-height: 100vh;
       background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
     }
-    
+
     /* Bike container - centered */
     #bikeContainer {
       position: relative;
@@ -108,7 +108,7 @@
       align-items: center;
       overflow: visible;
     }
-    
+
     /* SVG Bike - Professional racing bike */
     #svgBike {
       position: absolute;
@@ -119,7 +119,7 @@
       transition: transform 0.1s ease-out;
       transform-origin: center 100px;
     }
-    
+
     /* Road line - very subtle */
     #roadLine {
       position: fixed;
@@ -128,20 +128,20 @@
       transform: translateX(-50%);
       width: 1px;
       height: 100%;
-      background: linear-gradient(to bottom, 
-        transparent 0%, 
-        #e5e5ea 5%, 
-        #e5e5ea 8%, 
-        transparent 12%, 
-        transparent 88%, 
-        #e5e5ea 92%, 
-        #e5e5ea 95%, 
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        #e5e5ea 5%,
+        #e5e5ea 8%,
+        transparent 12%,
+        transparent 88%,
+        #e5e5ea 92%,
+        #e5e5ea 95%,
         transparent 100%
       );
       pointer-events: none;
       z-index: 5;
     }
-    
+
     /* Info sections - LARGE TEXT */
     .info-section {
       max-width: 900px;
@@ -151,12 +151,12 @@
       transform: translateY(50px);
       transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
-    
+
     .info-section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    
+
     .info-section h1 {
       font-size: clamp(4rem, 10vw, 7rem);
       font-weight: 700;
@@ -165,7 +165,7 @@
       letter-spacing: -0.03em;
       line-height: 1.1;
     }
-    
+
     .info-section h2 {
       font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 600;
@@ -174,21 +174,21 @@
       letter-spacing: -0.02em;
       line-height: 1.15;
     }
-    
+
     .info-section p {
       font-size: clamp(1.75rem, 3.5vw, 2.25rem);
       color: #515154;
       line-height: 1.4;
       margin-bottom: 1rem;
     }
-    
+
     .info-section .subtitle {
       font-size: clamp(1.5rem, 3vw, 2rem);
       color: #86868b;
       font-weight: 400;
       line-height: 1.5;
     }
-    
+
     /* Social icons - clean Apple style with better visibility */
     .social-icons {
       display: flex;
@@ -198,7 +198,7 @@
       flex-wrap: wrap;
       margin-top: 3rem;
     }
-    
+
     .social-icon {
       display: inline-flex;
       flex-direction: column;
@@ -207,29 +207,29 @@
       transition: all 0.2s ease;
       color: #1d1d1f; /* Dark for maximum visibility */
     }
-    
+
     .social-icon:hover {
       color: #0071e3;
       transform: translateY(-3px);
     }
-    
+
     .social-icon svg {
       width: 36px;
       height: 36px;
       fill: currentColor;
     }
-    
+
     .social-icon span {
       font-size: 13px;
       font-weight: 400;
       color: #1d1d1f;
       letter-spacing: 0.01em;
     }
-    
+
     .social-icon:hover span {
       color: #0071e3;
     }
-    
+
     /* Individual icon colors on hover */
     .social-icon.github:hover { color: #1d1d1f; }
     .social-icon.gitlab:hover { color: #fc6d26; }
@@ -237,7 +237,7 @@
     .social-icon.blog:hover { color: #0071e3; }
     .social-icon.sessionize:hover { color: #1ab394; }
     .social-icon.muchskill:hover { color: #f2d361; }
-    
+
     /* Footer */
     .footer {
       padding: 4rem 2rem;
@@ -245,16 +245,16 @@
       color: #86868b;
       font-size: 14px;
     }
-    
+
     .footer a {
       color: #0071e3;
       text-decoration: none;
     }
-    
+
     .footer a:hover {
       text-decoration: underline;
     }
-    
+
     /* Scroll indicator - minimal */
     #scrollIndicator {
       position: fixed;
@@ -265,17 +265,17 @@
       opacity: 0.5;
       animation: bounce 2s infinite;
     }
-    
+
     #scrollIndicator.hidden {
       display: none;
     }
-    
+
     #scrollIndicator svg {
       width: 18px;
       height: 18px;
       fill: #86868b;
     }
-    
+
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {
         transform: translateX(-50%) translateY(0);
@@ -287,49 +287,49 @@
         transform: translateX(-50%) translateY(-4px);
       }
     }
-    
+
     /* Responsive */
     @media (max-width: 768px) {
       .scroll-section {
         padding: 1rem;
       }
-      
+
       #bikeContainer {
         height: 60vh;
       }
-      
+
       #svgBike {
         width: 400px;
       }
-      
+
       .social-icons {
         gap: 1.5rem;
       }
-      
+
       .social-icon span {
         display: none;
       }
     }
-    
+
     @media (max-width: 480px) {
       #svgBike {
         width: 300px;
       }
-      
+
       .social-icons {
         gap: 1rem;
       }
-      
+
       .social-icon svg {
         width: 32px;
         height: 32px;
       }
     }
-    
+
     .block {
       display: block;
     }
-    
+
     /* Smooth animations */
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -345,10 +345,10 @@
       <div class="loader-text">Loading</div>
     </div>
   </div>
-  
+
   <!-- Road line -->
   <div id="roadLine"></div>
-  
+
   <!-- Hero Section with Bike -->
   <section id="hero" class="scroll-section">
     <div id="bikeContainer">
@@ -357,33 +357,33 @@
       <svg id="svgBike" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
         <!-- Frame - Top tube (slope design) -->
         <path d="M70 140 Q120 132 200 138" stroke="#1d1d1f" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        
+
         <!-- Frame - Down tube (aero) -->
         <path d="M200 138 Q180 155 140 175" stroke="#1d1d1f" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        
+
         <!-- Frame - Seat tube -->
         <path d="M200 138 L210 100" stroke="#1d1d1f" stroke-width="10" stroke-linecap="round"/>
-        
+
         <!-- Frame - Seat stay (thin) -->
         <path d="M210 100 Q240 110 280 140" stroke="#1d1d1f" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        
+
         <!-- Frame - Chain stay (thin) -->
         <path d="M140 175 L200 185" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
-        
+
         <!-- Head tube -->
         <path d="M70 140 L70 120" stroke="#1d1d1f" stroke-width="10" stroke-linecap="round"/>
-        
+
         <!-- Fork (thin blades) -->
         <path d="M70 120 Q45 145 30 175" stroke="#1d1d1f" stroke-width="5" stroke-linecap="round"/>
         <path d="M70 120 Q95 145 120 175" stroke="#1d1d1f" stroke-width="5" stroke-linecap="round"/>
-        
+
         <!-- Handlebar - Drop handlebar (pro road bike) -->
         <path d="M70 120 Q85 110 110 105 Q135 100 160 105 Q170 107 175 115" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M175 115 L195 120" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
-        
+
         <!-- Stem -->
         <path d="M70 120 L85 115" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
-        
+
         <!-- Front wheel (large, pro road) -->
         <circle cx="55" cy="175" r="40" fill="none" stroke="#1d1d1f" stroke-width="3"/>
         <circle cx="55" cy="175" r="36" fill="none" stroke="#e5e5ea" stroke-width="1"/>
@@ -398,7 +398,7 @@
           <line x1="55" y1="175" x2="32" y2="153"/>
           <line x1="55" y1="175" x2="32" y2="197"/>
         </g>
-        
+
         <!-- Rear wheel (large, pro road) -->
         <circle cx="270" cy="175" r="40" fill="none" stroke="#1d1d1f" stroke-width="3"/>
         <circle cx="270" cy="175" r="36" fill="none" stroke="#e5e5ea" stroke-width="1"/>
@@ -413,32 +413,32 @@
           <line x1="270" y1="175" x2="247" y2="153"/>
           <line x1="270" y1="175" x2="247" y2="197"/>
         </g>
-        
+
         <!-- Saddle (minimal pro design) -->
         <ellipse cx="210" cy="95" rx="10" ry="4" fill="#1d1d1f" stroke="none"/>
         <path d="M205 95 L215 95" stroke="#86868b" stroke-width="2" stroke-linecap="round"/>
-        
+
         <!-- Seat post (thin carbon look) -->
         <path d="M208 100 L210 138" stroke="#86868b" stroke-width="4" stroke-linecap="round"/>
-        
+
         <!-- Crank arms -->
         <path d="M160 175 L130 175" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
         <path d="M160 175 L190 175" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
-        
+
         <!-- Pedals -->
         <circle cx="130" cy="175" r="3" fill="#1d1d1f"/>
         <circle cx="130" cy="175" r="8" fill="none" stroke="#c6c6c8" stroke-width="1"/>
         <circle cx="190" cy="175" r="3" fill="#1d1d1f"/>
         <circle cx="190" cy="175" r="8" fill="none" stroke="#c6c6c8" stroke-width="1"/>
-        
+
         <!-- Chain (subtle) -->
         <path d="M160 175 L160 170 Q170 168 180 170" stroke="#86868b" stroke-width="1.5" stroke-linecap="round"/>
         <path d="M180 170 L220 170" stroke="#86868b" stroke-width="1.5" stroke-linecap="round"/>
-        
+
         <!-- Accent lines (subtle blue highlights) -->
         <path d="M70 140 Q120 132 200 138" stroke="#0071e3" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6"/>
         <path d="M200 138 L210 100" stroke="#0071e3" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        
+
         <!-- Water bottle (sleek) -->
         <ellipse cx="150" cy="160" rx="3" ry="6" fill="#0071e3" opacity="0.7"/>
         <rect x="148" y="160" width="4" height="12" fill="#0071e3" opacity="0.7" rx="1"/>
@@ -450,42 +450,42 @@
       </svg>
     </div>
   </section>
-  
+
   <!-- Info Section 1: Name -->
   <section class="scroll-section">
     <div class="info-section" id="info1">
       <h1>luc weinbrecht</h1>
     </div>
   </section>
-  
+
   <!-- Info Section 2: Title -->
   <section class="scroll-section">
     <div class="info-section" id="info2">
       <h2>Software Architect</h2>
     </div>
   </section>
-  
+
   <!-- Info Section 3: And -->
   <section class="scroll-section">
     <div class="info-section" id="info3">
       <h2>and</h2>
     </div>
   </section>
-  
+
   <!-- Info Section 4: BPM -->
   <section class="scroll-section">
     <div class="info-section" id="info4">
       <h2>BPM Consultant</h2>
     </div>
   </section>
-  
+
   <!-- Info Section 5: Location -->
   <section class="scroll-section">
     <div class="info-section" id="info5">
       <p class="subtitle">living in Karlsruhe, Germany</p>
     </div>
   </section>
-  
+
   <!-- Info Section 6: Social Links -->
   <section class="scroll-section">
     <div class="info-section" id="info6">
@@ -501,13 +501,12 @@
           </svg>
         </a>
         <a href="https://www.linkedin.com/in/luc-weinbrecht" target="_blank" class="social-icon linkedin">
-          <svg viewBox="0 0 448 512" fill="currentColor">
-            <path d="M416 160c53.04 0 96-42.96 96-96s-42.96-96-96-96-96 42.96-96 96 42.96 96 96 96zM272 160c53.04 0 96-42.96 96-96s-42.96-96-96-96-96 42.96-96 96 42.96 96 96 96zM128 160c53.04 0 96-42.96 96-96s-42.96-96-96-96-96 42.96-96 96 42.96 96 96 96zM160 448H80V256h80v192zm-32-160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48c0 26.5-21.5 48-48 48zm256 160h-80V256h80v192zm-32-160c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48c0 26.5-21.5 48-48 48z"/>
-          </svg>
+          <svg viewBox="0 0 640 640" fill="currentColor">
+              <path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM165 266.2L231.5 266.2L231.5 480L165 480L165 266.2zM236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160C219.5 160 236.7 177.2 236.7 198.5zM413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480L413.9 480z"/>          </svg>
         </a>
         <a href="https://listed.to/@lwluc" target="_blank" class="social-icon blog">
           <svg viewBox="0 0 640 640" fill="currentColor">
-            <path d="M319.8 354.5C265.9 354.5 264 354.7 259.6 358.6C256.1 361.7 253.9 368 254.5 372.5C255.2 377.2 259.3 382.6 263.7 384.5C265.9 385.5 277.8 386.2 320 385.7L367.9 385.1L377.1 383.6C386.1 378.5 387.6 366.2 380.2 359.2C374.9 354.5 375.2 354.5 319.8 354.5zM543.2 484.6C539.7 513 520.2 535 492.1 542.1C484.9 543.9 482.4 544 319.2 543.9C161.4 543.9 153.3 543.8 147.2 542.1C138.8 539.9 131.6 536.6 124.9 532.1C119.3 528.3 111 520.3 107.9 515.7C104.1 510.1 99.7 500.4 97.9 493.7C96.1 487 96 484.3 96 320.3C96 157.2 96 153.7 97.8 146.6C104.1 121.9 123.7 103 149 97.4C156.3 95.8 481.1 95.5 489 97.1C510.2 101.4 526.9 114.2 536.6 133.5C544.3 148.8 543.6 132 543.9 314.1C544.1 429.9 543.9 478.6 543.2 484.6zM457.8 299.4C456.7 294.4 453.6 289.8 450.1 287.9C449 287.3 442.1 286.6 434.6 286.2C422.2 285.6 420.8 285.4 416.8 283.1C410.6 279.5 408.9 275.5 408.8 264.8C408.8 244.4 400.3 225.4 383.5 208.3C371.5 196.1 358.2 187.8 342.9 183.2C339.3 182.1 331.1 181.7 303.7 181.4C260.8 180.9 251.2 181.8 236.6 187.6C209.6 198.3 190.3 221 183.2 250C181.9 255.4 181.6 264.2 181.3 314.3C180.9 377.1 181.3 386.4 185.3 398.8C195 429.5 222.4 452.2 249.9 457.2C259.1 458.9 372.1 459.3 383.6 457.7C403.7 455 419.5 446.9 434.3 431.8C445 420.9 451.7 409 456.1 393.3C459.3 382.4 459 304.9 457.8 299.4z"/>
+              <path d="M258.4 260C263.2 255.1 264.6 254.9 294.8 254.9C322 254.9 322.9 255 326.9 257C332.7 259.9 335.2 264 335.2 270.6C335.2 276.5 332.8 280.6 327.6 284C324.8 285.8 323.1 285.9 296.5 286.1C280.1 286.2 267 285.9 265 285.3C254.7 282.4 250.9 267.6 258.4 260zM319.8 354.5C265.9 354.5 264 354.7 259.6 358.6C256.1 361.7 253.9 368 254.5 372.5C255.2 377.2 259.3 382.6 263.7 384.5C265.9 385.5 277.8 386.2 320 385.7L367.9 385.1L377.1 383.6C386.1 378.5 387.6 366.2 380.2 359.2C374.9 354.5 375.2 354.5 319.8 354.5zM543.2 484.6C539.7 513 520.2 535 492.1 542.1C484.9 543.9 482.4 544 319.2 543.9C161.4 543.9 153.3 543.8 147.2 542.1C138.8 539.9 131.6 536.6 124.9 532.1C119.3 528.3 111 520.3 107.9 515.7C104.1 510.1 99.7 500.4 97.9 493.7C96.1 487 96 484.3 96 320.3C96 157.2 96 153.7 97.8 146.6C104.1 121.9 123.7 103 149 97.4C156.3 95.8 481.1 95.5 489 97.1C510.2 101.4 526.9 114.2 536.6 133.5C544.3 148.8 543.6 132 543.9 314.1C544.1 429.9 543.9 478.6 543.2 484.6zM457.8 299.4C456.7 294.4 453.6 289.8 450.1 287.9C449 287.3 442.1 286.6 434.6 286.2C422.2 285.6 420.8 285.4 416.8 283.1C410.6 279.5 408.9 275.5 408.8 264.8C408.8 244.4 400.3 225.4 383.5 208.3C371.5 196.1 358.2 187.8 342.9 183.2C339.3 182.1 331.1 181.7 303.7 181.4C260.8 180.9 251.2 181.8 236.6 187.6C209.6 198.3 190.3 221 183.2 250C181.9 255.4 181.6 264.2 181.3 314.3C180.9 377.1 181.3 386.4 185.3 398.8C195 429.5 222.4 452.2 249.9 457.2C259.1 458.9 372.1 459.3 383.6 457.7C403.7 455 419.5 446.9 434.3 431.8C445 420.9 451.7 409 456.1 393.3C459.3 382.4 459 304.9 457.8 299.4z"/>
           </svg>
         </a>
         <a href="https://sessionize.com/luc-weinbrecht/" target="_blank" class="social-icon sessionize">
@@ -523,7 +522,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Footer -->
   <footer class="footer">
     <span>2026</span>
@@ -535,57 +534,57 @@
     // CLEAN RACING BIKE PORTFOLIO
     // Apple/Figma style with extra large text
     // ============================================
-    
+
     let bike, scrollPosition = 0, bikeProgress = 0;
     let infoSections = [];
-    
+
     // ============================================
     // INITIALIZE
     // ============================================
-    
+
     function init() {
       bike = document.getElementById('svgBike');
       infoSections = document.querySelectorAll('.info-section');
-      
+
       setupScroll();
       setupResize();
-      
+
       hideLoader();
     }
-    
+
     // ============================================
     // SCROLL HANDLING
     // ============================================
-    
+
     function setupScroll() {
       window.addEventListener('scroll', () => {
         scrollPosition = window.scrollY || window.pageYOffset;
-        
+
         // Calculate progress (0 to 1)
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         bikeProgress = Math.min(1, scrollPosition / docHeight);
-        
+
         // Bike moves to the right and slightly down, with lean
         const bikeX = bikeProgress * 300;
         const bikeY = bikeProgress * 10;
         const bikeRotate = bikeProgress * 6;
-        
+
         bike.style.transform = `translate(${bikeX}px, ${bikeY}px) rotate(${bikeRotate}deg)`;
-        
+
         // Wheels rotate - updated for new coordinates
         const frontWheel = bike.querySelector('circle[cx="55"][cy="175"]');
         const backWheel = bike.querySelector('circle[cx="270"][cy="175"]');
         const wheelRotation = bikeProgress * 720; // Two full rotations
-        
+
         if (frontWheel) frontWheel.style.transform = `rotate(${wheelRotation}deg)`;
         if (backWheel) backWheel.style.transform = `rotate(${wheelRotation}deg)`;
-        
+
         // Pedals rotate - updated for new pedal size (r=8)
         const pedals = bike.querySelectorAll('circle[r="8"]');
         pedals.forEach((pedal, index) => {
           pedal.style.transform = `rotate(${wheelRotation * (index === 0 ? 1 : -1)}deg)`;
         });
-        
+
         // Hide scroll indicator
         const scrollIndicator = document.getElementById('scrollIndicator');
         if (scrollPosition > 50) {
@@ -593,11 +592,11 @@
         } else {
           scrollIndicator.classList.remove('hidden');
         }
-        
+
         // Show info sections based on scroll position
         infoSections.forEach((section, index) => {
           const triggerPoint = (index + 1) * 0.16; // ~16%, 32%, 48%, 64%, 80%, 96%
-          
+
           if (bikeProgress > triggerPoint - 0.04 && bikeProgress < triggerPoint + 0.04) {
             section.classList.add('visible');
           } else {
@@ -605,15 +604,15 @@
           }
         });
       });
-      
+
       // Trigger initial check
       window.dispatchEvent(new Event('scroll'));
     }
-    
+
     // ============================================
     // RESIZE HANDLING
     // ============================================
-    
+
     function setupResize() {
       window.addEventListener('resize', () => {
         // Adjust bike size based on viewport
@@ -622,26 +621,26 @@
         const scale = containerHeight / 200;
         bike.style.transform = `scale(${scale})`;
       });
-      
+
       // Initial resize
       window.dispatchEvent(new Event('resize'));
     }
-    
+
     // ============================================
     // LOADER
     // ============================================
-    
+
     function hideLoader() {
       setTimeout(() => {
         const loader = document.getElementById('loader');
         loader.classList.add('hidden');
       }, 300);
     }
-    
+
     // ============================================
     // INITIALIZE
     // ============================================
-    
+
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
