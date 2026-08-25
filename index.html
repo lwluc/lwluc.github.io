@@ -109,14 +109,15 @@
       overflow: visible;
     }
     
-    /* SVG Bike - Racing bike style */
+    /* SVG Bike - Professional racing bike */
     #svgBike {
       position: absolute;
-      width: 400px;
+      width: 500px;
       height: auto;
       max-width: 90vw;
       z-index: 10;
       transition: transform 0.1s ease-out;
+      transform-origin: center 160px;
     }
     
     /* Road line - very subtle */
@@ -157,7 +158,7 @@
     }
     
     .info-section h1 {
-      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-size: clamp(4rem, 10vw, 7rem);
       font-weight: 700;
       color: #1d1d1f;
       margin-bottom: 1rem;
@@ -166,29 +167,29 @@
     }
     
     .info-section h2 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 600;
       color: #1d1d1f;
       margin-bottom: 1rem;
       letter-spacing: -0.02em;
-      line-height: 1.2;
+      line-height: 1.15;
     }
     
     .info-section p {
-      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
       color: #515154;
       line-height: 1.4;
       margin-bottom: 1rem;
     }
     
     .info-section .subtitle {
-      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-size: clamp(1.5rem, 3vw, 2rem);
       color: #86868b;
       font-weight: 400;
       line-height: 1.5;
     }
     
-    /* Social icons - clean Apple style */
+    /* Social icons - clean Apple style with better visibility */
     .social-icons {
       display: flex;
       justify-content: center;
@@ -204,7 +205,7 @@
       align-items: center;
       gap: 0.75rem;
       transition: all 0.2s ease;
-      color: #86868b;
+      color: #515154; /* Darker for better visibility */
     }
     
     .social-icon:hover {
@@ -221,7 +222,7 @@
     .social-icon span {
       font-size: 13px;
       font-weight: 400;
-      color: #86868b;
+      color: #515154;
       letter-spacing: 0.01em;
     }
     
@@ -294,11 +295,11 @@
       }
       
       #bikeContainer {
-        height: 50vh;
+        height: 60vh;
       }
       
       #svgBike {
-        width: 300px;
+        width: 400px;
       }
       
       .social-icons {
@@ -312,7 +313,7 @@
     
     @media (max-width: 480px) {
       #svgBike {
-        width: 250px;
+        width: 300px;
       }
       
       .social-icons {
@@ -327,6 +328,12 @@
     
     .block {
       display: block;
+    }
+    
+    /* Smooth animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -345,80 +352,90 @@
   <!-- Hero Section with Bike -->
   <section id="hero" class="scroll-section">
     <div id="bikeContainer">
-      <!-- Racing Bike SVG -->
-      <svg id="svgBike" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- Frame -->
-        <path d="M50 120 L30 80 L40 75 L150 75 L160 80 L140 120 Z" fill="#1d1d1f" stroke="#86868b" stroke-width="1"/>
+      <!-- Professional Racing Bike SVG -->
+      <!-- Source: Custom design inspired by premium bike illustrations -->
+      <svg id="svgBike" viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
+        <!-- Frame - Main tube -->
+        <path d="M80 150 Q150 130 250 140 Q300 145 350 150" stroke="#1d1d1f" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         
-        <!-- Top tube -->
-        <path d="M140 120 L150 115 L280 115 L290 120 L140 120 Z" fill="#1d1d1f" stroke="#86868b" stroke-width="1"/>
+        <!-- Frame - Seat tube -->
+        <path d="M250 140 L250 90" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
         
-        <!-- Seat tube -->
-        <path d="M150 80 L160 120" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
+        <!-- Frame - Down tube -->
+        <path d="M250 140 Q220 170 150 190" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
         
-        <!-- Seat stays -->
-        <path d="M150 80 L260 140" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
-        <path d="M260 140 L280 120" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
+        <!-- Frame - Chain stay -->
+        <path d="M150 190 L200 210" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
         
-        <!-- Chain stays -->
-        <path d="M150 80 L250 160" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
-        <path d="M250 160 L280 120" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
+        <!-- Frame - Seat stay -->
+        <path d="M250 90 Q280 100 350 150" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
         
         <!-- Head tube -->
-        <path d="M40 75 L50 85" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
+        <path d="M80 150 L80 120" stroke="#1d1d1f" stroke-width="12" stroke-linecap="round"/>
         
         <!-- Fork -->
-        <path d="M50 85 L30 160" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
-        <path d="M30 160 L45 160" stroke="#1d1d1f" stroke-width="6" stroke-linecap="round"/>
+        <path d="M80 120 Q50 150 30 200" stroke="#1d1d1f" stroke-width="10" stroke-linecap="round"/>
+        <path d="M80 120 Q110 150 140 200" stroke="#1d1d1f" stroke-width="10" stroke-linecap="round"/>
         
         <!-- Handlebar (drop style) -->
-        <path d="M50 85 L70 70 L120 70 L130 75" stroke="#1d1d1f" stroke-width="5" stroke-linecap="round"/>
+        <path d="M80 120 Q100 100 140 100 Q180 100 200 110" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M200 110 L230 120" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
         
         <!-- Front wheel -->
-        <circle cx="45" cy="160" r="40" fill="none" stroke="#1d1d1f" stroke-width="3"/>
-        <circle cx="45" cy="160" r="35" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
-        <!-- Spokes -->
-        <g stroke="#c6c6c8" stroke-width="0.8">
-          <line x1="45" y1="160" x2="45" y2="120"/>
-          <line x1="45" y1="160" x2="45" y2="200"/>
-          <line x1="45" y1="160" x2="80" y2="160"/>
-          <line x1="45" y1="160" x2="10" y2="160"/>
-          <line x1="45" y1="160" x2="63" y2="142"/>
-          <line x1="45" y1="160" x2="63" y2="178"/>
-          <line x1="45" y1="160" x2="27" y2="142"/>
-          <line x1="45" y1="160" x2="27" y2="178"/>
+        <circle cx="60" cy="200" r="35" fill="none" stroke="#1d1d1f" stroke-width="4"/>
+        <circle cx="60" cy="200" r="30" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
+        <!-- Front wheel spokes -->
+        <g stroke="#c6c6c8" stroke-width="1">
+          <line x1="60" y1="200" x2="60" y2="165"/>
+          <line x1="60" y1="200" x2="60" y2="235"/>
+          <line x1="60" y1="200" x2="95" y2="200"/>
+          <line x1="60" y1="200" x2="25" y2="200"/>
+          <line x1="60" y1="200" x2="77" y2="183"/>
+          <line x1="60" y1="200" x2="77" y2="217"/>
+          <line x1="60" y1="200" x2="43" y2="183"/>
+          <line x1="60" y1="200" x2="43" y2="217"/>
         </g>
         
         <!-- Back wheel -->
-        <circle cx="260" cy="160" r="40" fill="none" stroke="#1d1d1f" stroke-width="3"/>
-        <circle cx="260" cy="160" r="35" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
-        <!-- Spokes -->
-        <g stroke="#c6c6c8" stroke-width="0.8">
-          <line x1="260" y1="160" x2="260" y2="120"/>
-          <line x1="260" y1="160" x2="260" y2="200"/>
-          <line x1="260" y1="160" x2="295" y2="160"/>
-          <line x1="260" y1="160" x2="225" y2="160"/>
-          <line x1="260" y1="160" x2="278" y2="142"/>
-          <line x1="260" y1="160" x2="278" y2="178"/>
-          <line x1="260" y1="160" x2="242" y2="142"/>
-          <line x1="260" y1="160" x2="242" y2="178"/>
+        <circle cx="280" cy="200" r="35" fill="none" stroke="#1d1d1f" stroke-width="4"/>
+        <circle cx="280" cy="200" r="30" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
+        <!-- Back wheel spokes -->
+        <g stroke="#c6c6c8" stroke-width="1">
+          <line x1="280" y1="200" x2="280" y2="165"/>
+          <line x1="280" y1="200" x2="280" y2="235"/>
+          <line x1="280" y1="200" x2="315" y2="200"/>
+          <line x1="280" y1="200" x2="245" y2="200"/>
+          <line x1="280" y1="200" x2="297" y2="183"/>
+          <line x1="280" y1="200" x2="297" y2="217"/>
+          <line x1="280" y1="200" x2="263" y2="183"/>
+          <line x1="280" y1="200" x2="263" y2="217"/>
         </g>
         
-        <!-- Pedals -->
-        <circle cx="150" cy="140" r="3" fill="#1d1d1f"/>
-        <circle cx="150" cy="140" r="8" fill="none" stroke="#c6c6c8" stroke-width="1"/>
-        <circle cx="150" cy="80" r="3" fill="#1d1d1f"/>
-        <circle cx="150" cy="80" r="8" fill="none" stroke="#c6c6c8" stroke-width="1"/>
-        
         <!-- Saddle -->
-        <ellipse cx="165" cy="70" rx="10" ry="4" fill="#1d1d1f" stroke="#86868b" stroke-width="0.5"/>
+        <ellipse cx="250" cy="85" rx="12" ry="6" fill="#1d1d1f" stroke="#86868b" stroke-width="1"/>
+        <path d="M245 85 L255 85" stroke="#1d1d1f" stroke-width="3" stroke-linecap="round"/>
+        
+        <!-- Seat post -->
+        <path d="M250 90 L250 110" stroke="#1d1d1f" stroke-width="8" stroke-linecap="round"/>
+        
+        <!-- Pedals -->
+        <circle cx="150" cy="200" r="4" fill="#1d1d1f"/>
+        <circle cx="150" cy="200" r="10" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
+        <circle cx="150" cy="160" r="4" fill="#1d1d1f"/>
+        <circle cx="150" cy="160" r="10" fill="none" stroke="#c6c6c8" stroke-width="1.5"/>
         
         <!-- Chain -->
-        <path d="M150 80 L180 90 L200 85 L240 95 L250 160" stroke="#86868b" stroke-width="1.5" stroke-dasharray="2,2"/>
+        <path d="M150 160 L150 195 Q170 200 190 200" stroke="#86868b" stroke-width="2" stroke-dasharray="3,2" stroke-linecap="round"/>
+        <path d="M190 200 L240 200" stroke="#86868b" stroke-width="2" stroke-dasharray="3,2" stroke-linecap="round"/>
         
-        <!-- Accent line (Apple blue) -->
-        <path d="M50 120 L140 120" stroke="#0071e3" stroke-width="2" stroke-linecap="round"/>
-        <path d="M150 80 L280 115" stroke="#0071e3" stroke-width="2" stroke-linecap="round"/>
+        <!-- Accent lines (Apple blue) -->
+        <path d="M80 150 Q150 130 250 140" stroke="#0071e3" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+        <path d="M250 140 L250 90" stroke="#0071e3" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+        <path d="M250 90 Q280 100 350 150" stroke="#0071e3" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+        
+        <!-- Water bottle -->
+        <ellipse cx="200" cy="175" rx="4" ry="8" fill="#0071e3" opacity="0.8"/>
+        <rect x="198" y="175" width="4" height="15" fill="#0071e3" opacity="0.8" rx="1"/>
       </svg>
     </div>
     <div id="scrollIndicator">
@@ -510,7 +527,7 @@
   <script>
     // ============================================
     // CLEAN RACING BIKE PORTFOLIO
-    // Apple/Figma style with large text
+    // Apple/Figma style with extra large text
     // ============================================
     
     let bike, scrollPosition = 0, bikeProgress = 0;
@@ -535,8 +552,6 @@
     // ============================================
     
     function setupScroll() {
-      let lastScrollTop = 0;
-      
       window.addEventListener('scroll', () => {
         scrollPosition = window.scrollY || window.pageYOffset;
         
@@ -544,24 +559,25 @@
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         bikeProgress = Math.min(1, scrollPosition / docHeight);
         
-        // Bike moves to the right and slightly down as you scroll
-        // Racing bike leaning forward
-        const bikeX = bikeProgress * 200;
-        const bikeY = bikeProgress * 20;
-        const bikeRotate = bikeProgress * 5;
+        // Bike moves to the right and slightly down, with lean
+        const bikeX = bikeProgress * 250;
+        const bikeY = bikeProgress * 10;
+        const bikeRotate = bikeProgress * 8;
         
         bike.style.transform = `translate(${bikeX}px, ${bikeY}px) rotate(${bikeRotate}deg)`;
         
         // Wheels rotate
-        const wheels = bike.querySelectorAll('circle[r="40"]');
-        wheels.forEach(wheel => {
-          wheel.style.transform = `rotate(${bikeProgress * 360}deg)`;
-        });
+        const frontWheel = bike.querySelector('circle[cx="60"][cy="200"]');
+        const backWheel = bike.querySelector('circle[cx="280"][cy="200"]');
+        const wheelRotation = bikeProgress * 720; // Two full rotations
+        
+        if (frontWheel) frontWheel.style.transform = `rotate(${wheelRotation}deg)`;
+        if (backWheel) backWheel.style.transform = `rotate(${wheelRotation}deg)`;
         
         // Pedals rotate
-        const pedals = bike.querySelectorAll('circle[r="8"]');
+        const pedals = bike.querySelectorAll('circle[r="10"]');
         pedals.forEach((pedal, index) => {
-          pedal.style.transform = `rotate(${bikeProgress * 360 * (index === 0 ? 1 : -1)}deg)`;
+          pedal.style.transform = `rotate(${wheelRotation * (index === 0 ? 1 : -1)}deg)`;
         });
         
         // Hide scroll indicator
@@ -574,16 +590,14 @@
         
         // Show info sections based on scroll position
         infoSections.forEach((section, index) => {
-          const triggerPoint = (index + 1) * 0.18; // ~18%, 36%, 54%, 72%, 90%, 108%
+          const triggerPoint = (index + 1) * 0.16; // ~16%, 32%, 48%, 64%, 80%, 96%
           
-          if (bikeProgress > triggerPoint - 0.05 && bikeProgress < triggerPoint + 0.05) {
+          if (bikeProgress > triggerPoint - 0.04 && bikeProgress < triggerPoint + 0.04) {
             section.classList.add('visible');
           } else {
             section.classList.remove('visible');
           }
         });
-        
-        lastScrollTop = scrollPosition;
       });
       
       // Trigger initial check
@@ -599,7 +613,7 @@
         // Adjust bike size based on viewport
         const bikeContainer = document.getElementById('bikeContainer');
         const containerHeight = bikeContainer.clientHeight;
-        const scale = containerHeight / 200;
+        const scale = containerHeight / 250;
         bike.style.transform = `scale(${scale})`;
       });
       
