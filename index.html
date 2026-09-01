@@ -9,76 +9,25 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-      background:#000;
-      color:#fff;
-      min-height:100vh;
-      overflow-x:hidden;
-      line-height:1.4
-    }
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f5f5f7;color:#1d1d1f;min-height:100vh;overflow-x:hidden;line-height:1.4}
     #canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
-    main{
-      padding:2rem;
-      max-width:1200px;
-      margin:0 auto;
-      position:relative;
-      z-index:1
-    }
+    main{padding:2rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
     header{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
-    h1{
-      font-size:clamp(3rem,8vw,6rem);
-      font-weight:700;
-      letter-spacing:-.02em;
-      margin-bottom:1rem
-    }
-    .subtitle{
-      font-size:clamp(1.5rem,4vw,2.5rem);
-      color:#888;
-      font-weight:300
-    }
-    section{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      padding:4rem 0
-    }
-    section h2{
-      font-size:clamp(2.5rem,6vw,4rem);
-      font-weight:600;
-      margin-bottom:1rem
-    }
-    .social-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-      gap:2rem;
-      margin-top:3rem
-    }
-    .social-item{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:.5rem;
-      transition:all .3s ease
-    }
+    h1{font-size:clamp(3rem,8vw,6rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem}
+    .subtitle{font-size:clamp(1.5rem,4vw,2.5rem);color:#86868b;font-weight:300}
+    section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:4rem 0}
+    section h2{font-size:clamp(2.5rem,6vw,4rem);font-weight:600;margin-bottom:1rem}
+    .social-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2rem;margin-top:3rem}
+    .social-item{display:flex;flex-direction:column;align-items:center;gap:.5rem;transition:all .3s ease}
     .social-item:hover{transform:translateY(-5px)}
-    .social-item svg{width:32px;height:32px;fill:#888;transition:fill .3s}
-    .social-item:hover svg{fill:#fff}
-    .social-item span{font-size:.85rem;color:#888;transition:color .3s}
-    .social-item:hover span{color:#fff}
-    footer{
-      padding:4rem 2rem;
-      text-align:center;
-      color:#888;
-      font-size:.9rem
-    }
-    footer a{color:#888;text-decoration:none}
-    footer a:hover{color:#fff}
-    @media (max-width:768px){
-      main{padding:1.5rem}
-      .social-grid{grid-template-columns:repeat(3,1fr)}
-    }
+    .social-item svg{width:32px;height:32px;fill:#86868b;transition:fill .3s}
+    .social-item:hover svg{fill:#0071e3}
+    .social-item span{font-size:.85rem;color:#86868b;transition:color .3s}
+    .social-item:hover span{color:#0071e3}
+    footer{padding:4rem 2rem;text-align:center;color:#86868b;font-size:.9rem}
+    footer a{color:#0071e3;text-decoration:none}
+    footer a:hover{color:#0071e3;text-decoration:underline}
+    @media (max-width:768px){main{padding:1.5rem}.social-grid{grid-template-columns:repeat(3,1fr)}}
   </style>
 </head>
 <body>
@@ -88,12 +37,10 @@
       <h1>luc weinbrecht</h1>
       <p class="subtitle">Softwarearchitekt & BPM-Berater</p>
     </header>
-
     <section id="about">
       <h2>Über mich</h2>
       <p class="subtitle">Ich lebe in Karlsruhe, Deutschland</p>
     </section>
-
     <section id="social">
       <h2>Kontakt</h2>
       <div class="social-grid">
@@ -123,12 +70,10 @@
         </a>
       </div>
     </section>
-
     <footer>
       <span>© 2026 luc weinbrecht</span>
     </footer>
   </main>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
     (function(){
@@ -137,29 +82,19 @@
       const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('canvas'),antialias:false,alpha:true});
       renderer.setSize(window.innerWidth,window.innerHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-      renderer.setClearColor(0x000000,0);
-
-      // Low-poly geometric shapes - architectural theme
+      renderer.setClearColor(0xf5f5f7,0);
       const geometry=new THREE.BoxGeometry(2,2,2);
-      const material=new THREE.MeshBasicMaterial({color:0x222222,wireframe:false});
-
-      // Create floating cubes
+      const material=new THREE.MeshBasicMaterial({color:0xe5e5ea,wireframe:false});
       const cubes=[];
       for(let i=0;i<8;i++){
         const cube=new THREE.Mesh(geometry,material);
-        cube.position.set(
-          (Math.random()-0.5)*15,
-          (Math.random()-0.5)*10,
-          (Math.random()-0.5)*8
-        );
+        cube.position.set((Math.random()-0.5)*15,(Math.random()-0.5)*10,(Math.random()-0.5)*8);
         cube.scale.set(0.5+Math.random(),0.5+Math.random(),0.5+Math.random());
         cubes.push({mesh:cube,speed:0.1+Math.random()*0.2});
         scene.add(cube);
       }
-
-      // Light lines
       const lineGeometry=new THREE.BufferGeometry();
-      const lineMaterial=new THREE.LineBasicMaterial({color:0x333333,transparent:true,opacity:0.3});
+      const lineMaterial=new THREE.LineBasicMaterial({color:0xd2d2d7,transparent:true,opacity:0.5});
       const linePoints=[];
       for(let i=0;i<20;i++){
         linePoints.push(
@@ -170,26 +105,20 @@
       lineGeometry.setFromPoints(linePoints);
       const lines=new THREE.LineSegments(lineGeometry,lineMaterial);
       scene.add(lines);
-
       camera.position.z=15;
-
       let mouseX=0,mouseY=0;
       let targetX=0,targetY=0;
-
       function onMouseMove(e){
         mouseX=(e.clientX/window.innerWidth)*2-1;
         mouseY=-(e.clientY/window.innerHeight)*2+1;
       }
-
       function onResize(){
         camera.aspect=window.innerWidth/window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth,window.innerHeight);
       }
-
       window.addEventListener('mousemove',onMouseMove);
       window.addEventListener('resize',onResize);
-
       function animate(){
         requestAnimationFrame(animate);
         targetX+=((mouseX*2)-targetX)*0.05;
@@ -197,10 +126,7 @@
         camera.position.x+=((targetX*2)-camera.position.x)*0.05;
         camera.position.y+=((-targetY*1.5)-camera.position.y)*0.05;
         camera.lookAt(scene.position);
-
-        // Rotate cubes
         cubes.forEach((c,i)=>{c.mesh.rotation.x+=0.005*c.speed;c.mesh.rotation.y+=0.008*c.speed;});
-
         renderer.render(scene,camera);
       }
       animate();
