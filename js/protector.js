@@ -27,15 +27,17 @@ const loadGame = (again = false) => {
 showSuccessMsg = code => {
   let text = 'You lucky seems like you won against me! 🥳';
   if (code === 'hacker') text = 'Nicely bypassed the game! 👾';
-  const snackbar = document.createElement('div');
-  snackbar.id = 'snackbar';
-  snackbar.innerHTML = text;
-  snackbar.className = 'show';
-  document.body.appendChild(snackbar);
-  setTimeout(() => {
-    snackbar.className = snackbar.className.replace('show', '');
-    document.body.removeChild(snackbar);
-  }, 3000);
+  window.onload = () => {
+    const snackbar = document.createElement('div');
+    snackbar.id = 'snackbar';
+    snackbar.innerHTML = text;
+    snackbar.className = 'show';
+    document.body.appendChild(snackbar);
+    setTimeout(() => {
+      snackbar.className = snackbar.className.replace('show', '');
+      document.body.removeChild(snackbar);
+    }, 3000);
+  }
 };
 
 playAgain = () => {
